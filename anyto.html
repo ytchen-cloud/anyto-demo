@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anyto Global | Win Your Dream</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Noto+Sans+KR:wght@400;700&display=swap');
+        
+        body {
+            font-family: 'DM Sans', 'Noto Sans KR', sans-serif;
+            background-color: #ffffff;
+            color: #1e293b;
+        }
+
+        .btn-primary {
+            background-color: #059669;
+            color: white;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 14px 0 rgba(5, 150, 105, 0.39);
+        }
+        .btn-primary:hover {
+            background-color: #047857;
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(5, 150, 105, 0.23);
+        }
+
+        .clean-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .missed-item {
+            filter: grayscale(100%);
+            opacity: 0.6;
+            transition: all 0.3s ease;
+        }
+        .missed-item:hover {
+            filter: grayscale(0%);
+            opacity: 1;
+        }
+        .active-item {
+            border: 2px solid #059669;
+            box-shadow: 0 10px 25px -5px rgba(5, 150, 105, 0.15);
+            transform: scale(1.01);
+        }
+
+        .marquee-container { overflow: hidden; white-space: nowrap; position: relative; }
+        .marquee-content { display: inline-block; animation: marquee 30s linear infinite; }
+        .marquee-content:hover { animation-play-state: paused; }
+        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    </style>
+</head>
+<body class="antialiased">
+
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex items-center gap-2 cursor-pointer" onclick="location.reload()">
+                    <div class="w-10 h-10 bg-emerald-50 rounded-lg flex items-center justify-center text-emerald-600 border border-emerald-100">
+                        <i class="fa-solid fa-fire-flame-curved text-2xl"></i>
+                    </div>
+                    <span class="text-2xl font-bold tracking-tight text-slate-900">Anyto</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#" class="text-slate-600 hover:text-emerald-600 font-medium transition">当前奖池</a>
+                    <a href="#" class="text-slate-600 hover:text-emerald-600 font-medium transition">ESG 影响力</a>
+                    <a href="#" class="text-slate-600 hover:text-emerald-600 font-medium transition">社区投票</a>
+                    <a href="#" class="text-slate-600 hover:text-emerald-600 font-medium transition">往期中奖</a>
+                </div>
+                <div class="flex items-center gap-4">
+                    <div class="hidden md:flex items-center gap-3">
+                        <button class="text-slate-600 hover:text-emerald-600 text-sm font-bold transition">登录</button>
+                        <button class="btn-primary px-5 py-2.5 rounded-full text-sm font-bold">注册账户</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="relative pt-32 pb-12 lg:pt-40 lg:pb-20 overflow-hidden bg-slate-50">
+        <div class="absolute top-0 right-0 w-1/2 h-full bg-emerald-50/50 rounded-bl-[100px] pointer-events-none"></div>
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row gap-12 items-center">
+            <div class="lg:w-1/2 text-center lg:text-left">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100 border border-emerald-200 text-emerald-700 text-xs font-bold mb-6">
+                    <i class="fa-solid fa-check-circle"></i> 英国合规 Prize Competition | 韩国站开启
+                </div>
+                <h1 class="text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 mb-6 leading-[1.1]">
+                    仅需 <span class="text-emerald-600">$5</span> <br>
+                    赢取您的梦想
+                </h1>
+                <p class="text-lg text-slate-500 mb-8 max-w-xl mx-auto lg:mx-0 leading-relaxed">
+                    豪宅、超跑、科技新品、现金大奖。您的每一次参与都在资助全球 ESG 项目，并为您积累长期会员权益。
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                    <button class="btn-primary px-8 py-4 rounded-xl text-lg font-bold flex items-center justify-center gap-2">立即参与 <i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="bg-white border-2 border-slate-200 text-slate-700 px-8 py-4 rounded-xl text-lg font-bold hover:border-emerald-500 hover:text-emerald-600 transition">查看本期奖品</button>
+                </div>
+            </div>
+            <div class="lg:w-1/2 w-full">
+                 <div class="clean-card rounded-2xl p-4 active-item bg-white relative">
+                    <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-emerald-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg z-10">正在进行</div>
+                    <div class="text-xs font-bold text-emerald-600 mb-2 uppercase flex items-center gap-1"><span class="animate-pulse">●</span> Ends in 18 Days</div>
+                    <img src="https://images.unsplash.com/photo-1600596542815-e328d4de4bf7?auto=format&fit=crop&w=800&q=80" class="w-full h-48 object-cover rounded-lg mb-4">
+                    <div class="px-2">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-900">韩国杨平郡 · 隐世山庄</h3>
+                                <p class="text-sm text-slate-500">总价值 $1,200,000</p>
+                            </div>
+                             <div class="text-right">
+                                <div class="text-sm font-bold text-slate-700">倒计时</div>
+                                <div class="text-xl font-mono text-emerald-600 font-bold">18:04:32:10</div>
+                            </div>
+                        </div>
+                        <div class="mb-2 flex justify-between text-xs font-semibold text-slate-500">
+                            <span>已售 682,104 份</span>
+                            <span>目标 1,000,000 份</span>
+                        </div>
+                        <div class="w-full bg-slate-100 rounded-full h-3 mb-6">
+                            <div class="bg-emerald-500 h-3 rounded-full" style="width: 68%"></div>
+                        </div>
+                        <button class="mt-2 w-full bg-emerald-600 text-white font-bold py-3 rounded-xl hover:bg-emerald-700 transition flex justify-between px-6">
+                            <span>立即抓住机会</span>
+                            <span>$5.00 / 份</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="py-16 bg-white border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="clean-card rounded-2xl p-10 bg-slate-50/50">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 divide-y md:divide-y-0 md:divide-x divide-slate-200">
+                    <div class="text-center md:text-left md:px-6">
+                        <h3 class="text-sm font-bold text-slate-500 uppercase tracking-wide">本期 ESG 累积池</h3>
+                        <div class="text-5xl font-bold text-emerald-600 font-mono tracking-tight mt-2">$341,052</div>
+                        <p class="text-xs text-slate-400 mt-2 flex items-center justify-center md:justify-start gap-1"><i class="fa-solid fa-check-circle text-emerald-500"></i> 数据已在链上验证</p>
+                    </div>
+                    <div class="text-center md:text-left pt-8 md:pt-0 md:px-6">
+                        <h3 class="text-sm font-bold text-slate-500 uppercase tracking-wide">主力基金收益率 (APY)</h3>
+                        <div class="text-5xl font-bold text-amber-500 font-mono tracking-tight mt-2">12.5%</div>
+                        <p class="text-xs text-slate-400 mt-2">由 FCA 监管资产机构托管</p>
+                    </div>
+                    <div class="text-center md:text-left pt-8 md:pt-0 md:px-6">
+                        <h3 class="text-sm font-bold text-slate-500 uppercase tracking-wide">已产生公益英雄</h3>
+                        <div class="text-5xl font-bold text-blue-600 font-mono tracking-tight mt-2">12,403</div>
+                        <p class="text-xs text-slate-400 mt-2">Level 3 以上用户</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4">
+                    错过了往期的精彩奖品？<br>
+                    <span class="text-emerald-600">别让未来的机会也溜走。</span>
+                </h2>
+                <p class="text-slate-500">每一次犹豫，都可能是一个梦想的擦肩而过。</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
+                <div class="hidden md:block absolute top-1/2 left-0 w-full h-1 bg-slate-100 -z-10 -translate-y-1/2"></div>
+                <div class="clean-card rounded-xl p-4 missed-item bg-slate-50">
+                    <div class="text-xs font-bold text-slate-400 mb-2 uppercase">Ended: 2024.11.15</div>
+                    <img src="https://images.unsplash.com/photo-1560958089-b8a1929cea89?auto=format&fit=crop&w=500&q=80" class="w-full h-32 object-cover rounded-lg mb-3 grayscale">
+                    <h3 class="font-bold text-slate-700">Tesla Model 3</h3>
+                    <p class="text-sm text-slate-500">Winner: J. Smith (UK)</p>
+                    <div class="mt-3 text-center text-xs font-bold text-slate-400 border border-slate-200 rounded py-1">已结束</div>
+                </div>
+                <div class="clean-card rounded-xl p-4 missed-item bg-slate-50">
+                    <div class="text-xs font-bold text-slate-400 mb-2 uppercase">Ended: 2024.12.30</div>
+                    <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=500&q=80" class="w-full h-32 object-cover rounded-lg mb-3 grayscale">
+                    <h3 class="font-bold text-slate-700">iPhone 15 Pro Max</h3>
+                    <p class="text-sm text-slate-500">10 Winners</p>
+                    <div class="mt-3 text-center text-xs font-bold text-slate-400 border border-slate-200 rounded py-1">已结束</div>
+                </div>
+                <div class="clean-card rounded-xl p-4 missed-item bg-slate-50">
+                    <div class="text-xs font-bold text-slate-400 mb-2 uppercase">Ended: 2025.02.14</div>
+                    <img src="https://images.unsplash.com/photo-1580519542036-c47de6196ba5?auto=format&fit=crop&w=500&q=80" class="w-full h-32 object-cover rounded-lg mb-3 grayscale">
+                    <h3 class="font-bold text-slate-700">£10,000 Cash</h3>
+                    <p class="text-sm text-slate-500">Winner: Li. W (CN)</p>
+                    <div class="mt-3 text-center text-xs font-bold text-slate-400 border border-slate-200 rounded py-1">已结束</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold text-slate-900 mb-12">简单三步，实现梦想</h2>
+            <div class="grid md:grid-cols-3 gap-10">
+                <div class="flex flex-col items-center">
+                    <div class="w-20 h-20 bg-emerald-50 rounded-full flex items-center justify-center text-emerald-600 text-3xl mb-6"><i class="fa-solid fa-ticket"></i></div>
+                    <h3 class="font-bold text-xl mb-2">1. 选择奖券</h3><p class="text-slate-500 text-sm">选择您心仪的房产或奖品。</p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="w-20 h-20 bg-emerald-50 rounded-full flex items-center justify-center text-emerald-600 text-3xl mb-6"><i class="fa-solid fa-brain"></i></div>
+                    <h3 class="font-bold text-xl mb-2">2. 回答问题</h3><p class="text-slate-500 text-sm">回答简单的技能问题进入奖池。</p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="w-20 h-20 bg-emerald-50 rounded-full flex items-center justify-center text-emerald-600 text-3xl mb-6"><i class="fa-solid fa-trophy"></i></div>
+                    <h3 class="font-bold text-xl mb-2">3. 等待开奖</h3><p class="text-slate-500 text-sm">每周五直播开奖，公平公正。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-white py-20 border-t border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-slate-900">听听赢家怎么说</h2>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="clean-card p-8 rounded-2xl relative bg-slate-50">
+                    <div class="flex items-center gap-4 mb-4"><img src="https://randomuser.me/api/portraits/women/44.jpg" class="w-12 h-12 rounded-full border-2 border-emerald-500"><div><div class="font-bold text-slate-900">Sarah J.</div><div class="text-xs text-slate-500">🇬🇧 London</div></div></div><p class="text-slate-600 text-sm italic">"我从没想过我会中奖。Anyto 不仅改变了我的家庭，还让我通过积分参与了公益。"</p>
+                </div>
+                <div class="clean-card p-8 rounded-2xl relative bg-slate-50">
+                    <div class="flex items-center gap-4 mb-4"><img src="https://randomuser.me/api/portraits/men/32.jpg" class="w-12 h-12 rounded-full border-2 border-emerald-500"><div><div class="font-bold text-slate-900">Park M.</div><div class="text-xs text-slate-500">🇰🇷 Seoul</div></div></div><p class="text-slate-600 text-sm italic">"除了这辆车，我更喜欢我的票钱用于海洋保护。真实的数据让我很放心。"</p>
+                </div>
+                <div class="clean-card p-8 rounded-2xl relative bg-slate-50">
+                    <div class="flex items-center gap-4 mb-4"><img src="https://randomuser.me/api/portraits/women/68.jpg" class="w-12 h-12 rounded-full border-2 border-emerald-500"><div><div class="font-bold text-slate-900">Li W.</div><div class="text-xs text-slate-500">🇨🇳 Shanghai</div></div></div><p class="text-slate-600 text-sm italic">"盲盒揭晓太刺激了！而且我现在还是高级会员，每周都能收到积分奖励。"</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="py-20 bg-slate-50 border-t border-slate-100">
+        <div class="max-w-3xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-slate-900 mb-8 text-center">常见问题</h2>
+            <div class="space-y-4">
+                <details class="bg-white rounded-lg p-6 cursor-pointer border border-slate-200">
+                    <summary class="font-bold text-lg text-slate-800">这真的合法吗？</summary>
+                    <p class="mt-2 text-slate-500">是的。Anyto 依据英国 2005 年赌博法案（Gambling Act 2005）作为有技能要求的“竞赛（Prize Competition）”运营，而非彩票。</p>
+                </details>
+                <details class="bg-white rounded-lg p-6 cursor-pointer border border-slate-200">
+                    <summary class="font-bold text-lg text-slate-800">资金如何保障？</summary>
+                    <p class="mt-2 text-slate-500">所有奖池资金由第三方 FCA 监管机构托管，确保 100% 安全，并在开奖后直接划转。</p>
+                </details>
+                <details class="bg-white rounded-lg p-6 cursor-pointer border border-slate-200">
+                    <summary class="font-bold text-lg text-slate-800">非英国居民可以参加吗？</summary>
+                    <p class="mt-2 text-slate-500">当然。我们的房产奖品对全球用户开放。如果您中奖但不想居住，可以选择等值的现金替代方案。</p>
+                </details>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-white py-10 border-t border-slate-100">
+        <div class="marquee-container">
+            <div class="marquee-content">
+                <a href="xinchina.html" class="inline-flex items-center gap-2 mx-8 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition"><div class="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center text-red-600 font-bold font-serif">XC</div><span class="font-bold text-lg text-slate-700">XinChina</span></a>
+                <a href="#" class="inline-flex items-center gap-2 mx-8 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition"><i class="fa-solid fa-earth-asia text-blue-500 text-3xl"></i><span class="font-bold text-lg text-slate-700">Green Earth HK</span></a>
+                <a href="#" class="inline-flex items-center gap-2 mx-8 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition"><i class="fa-solid fa-seedling text-green-500 text-3xl"></i><span class="font-bold text-lg text-slate-700">Korea Green Fund</span></a>
+                 <a href="xinchina.html" class="inline-flex items-center gap-2 mx-8 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition"><div class="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center text-red-600 font-bold font-serif">XC</div><span class="font-bold text-lg text-slate-700">XinChina</span></a>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-white border-t border-slate-200 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 text-center text-slate-500 text-sm">
+            <p>&copy; 2026 Anyto Global Ltd. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
