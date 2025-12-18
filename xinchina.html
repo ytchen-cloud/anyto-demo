@@ -35,9 +35,15 @@
         
         @keyframes slowZoom { from { transform: scale(1); } to { transform: scale(1.3); } }
         .hero-overlay { background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.6)); z-index: 1; }
+        
         .pillar-card { transition: all 0.3s ease; border: 1px solid #f3f4f6; }
         .pillar-card:hover { transform: translateY(-5px); border-color: #c0392b; box-shadow: 0 10px 30px rgba(192, 57, 43, 0.1); }
+        
         .feature-icon { background: #fff5f5; color: #c0392b; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; border-radius: 12px; font-size: 24px; margin-bottom: 1rem; }
+        
+        /* 拼写大赛专用样式 */
+        .bee-card { background: #fff; border-left: 4px solid #c0392b; transition: all 0.3s ease; }
+        .bee-card:hover { transform: translateX(5px); box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
     </style>
 </head>
 <body>
@@ -49,9 +55,10 @@
                 <span class="text-2xl font-bold tracking-tight text-gray-900 font-serif">XinChina</span>
             </div>
             <div class="hidden md:flex space-x-8 text-sm font-medium text-gray-600">
-                <a href="#vision" class="hover:text-xin-red transition">愿景</a>
-                <a href="#curriculum" class="hover:text-xin-red transition">五常课程</a>
-                <a href="#community" class="hover:text-xin-red transition">社群互动</a>
+                <a href="#vision" class="hover:text-xin-red transition">战略愿景</a>
+                <a href="#ecosystem" class="hover:text-xin-red transition">社群生态</a>
+                <a href="#spelling-bee" class="hover:text-xin-red transition">拼写大赛</a>
+                <a href="#membership" class="hover:text-xin-red transition">加入我们</a>
             </div>
             <button class="bg-xin-red text-white px-6 py-2 rounded-full text-sm font-bold hover:bg-red-800 transition">App 下载</button>
         </div>
@@ -71,9 +78,6 @@
                 <span class="flex items-center gap-2"><i class="fa-solid fa-handshake text-blue-400"></i> 信任 (Trust)</span>
                 <span class="flex items-center gap-2"><i class="fa-solid fa-heart text-red-500"></i> 温馨 (Warmth)</span>
             </div>
-            <p class="text-xl text-gray-200 max-w-2xl mx-auto mb-12 leading-relaxed drop-shadow-md">
-                我们致力于打造一个“以真实体验驱动、以平等交流为核”的文化社群。拒绝说教，用真实的体验消除隔阂。
-            </p>
             <div class="flex justify-center gap-4">
                 <button class="bg-xin-red text-white px-10 py-4 rounded-lg font-bold hover:bg-red-700 transition shadow-lg shadow-red-900/50">开始探索之旅</button>
             </div>
@@ -82,63 +86,143 @@
 
     <div id="vision" class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="grid md:grid-cols-2 gap-16 items-center">
-                <div>
-                    <h2 class="text-3xl font-bold mb-6">告别枯燥，拥抱真实</h2>
-                    <div class="space-y-6">
-                        <div class="flex gap-4"><div class="feature-icon"><i class="fa-solid fa-xmark"></i></div><div><h4 class="font-bold text-lg">传统痛点</h4><p class="text-gray-500 text-sm">教学枯燥、缺乏互动、刻板印象严重、资源分散。</p></div></div>
-                        <div class="flex gap-4"><div class="feature-icon text-green-600 bg-green-50"><i class="fa-solid fa-check"></i></div><div><h4 class="font-bold text-lg">XinChina 模式</h4><p class="text-gray-500 text-sm">去“大字报”化，用游戏化、短视频、集体智慧构建真实连接。</p></div></div>
-                    </div>
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold mb-4">战略路线图：从点到体</h2>
+                <p class="text-gray-500">循序渐进，构建无国界的文化交流生态系统。</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 relative">
+                <div class="hidden md:block absolute top-12 left-10 right-10 h-0.5 bg-gray-100 -z-10"></div>
+                
+                <div class="bg-white p-6 rounded-xl border border-gray-100 shadow-sm text-center">
+                    <div class="w-12 h-12 bg-red-50 text-xin-red rounded-full flex items-center justify-center font-bold text-xl mx-auto mb-4 border border-red-100">1</div>
+                    <h3 class="font-bold text-lg mb-1">点 (刚需切入)</h3>
+                    <p class="text-xs text-gray-400 mb-3">Target: 赴华工作/学习人群</p>
+                    <p class="text-sm text-gray-500">提供HSK教学与基础通识，解决最迫切的语言生存需求。</p>
                 </div>
-                <div class="bg-gray-50 p-8 rounded-2xl border border-gray-100">
-                    <h3 class="font-serif text-xl font-bold mb-4 text-center">战略路线图 (Roadmap)</h3>
-                    <div class="space-y-4">
-                        <div class="flex items-center gap-4"><div class="w-8 h-8 rounded-full bg-red-100 text-xin-red flex items-center justify-center font-bold">1</div><div><span class="font-bold">点 (刚需切入)</span> <span class="text-xs text-gray-400 block">服务赴华工作/学习人群 (HSK+通识)</span></div></div>
-                        <div class="w-0.5 h-6 bg-gray-200 ml-4"></div>
-                        <div class="flex items-center gap-4"><div class="w-8 h-8 rounded-full bg-red-100 text-xin-red flex items-center justify-center font-bold">2</div><div><span class="font-bold">线 (血脉延伸)</span> <span class="text-xs text-gray-400 block">拓展海外华裔及青少年寻根内容</span></div></div>
-                        <div class="w-0.5 h-6 bg-gray-200 ml-4"></div>
-                        <div class="flex items-center gap-4"><div class="w-8 h-8 rounded-full bg-gray-100 text-gray-400 flex items-center justify-center font-bold">3</div><div><span class="font-bold text-gray-500">面 (认知重塑)</span> <span class="text-xs text-gray-400 block">提升本土青年文化自信，消除偏见</span></div></div>
-                    </div>
+                <div class="bg-white p-6 rounded-xl border border-gray-100 shadow-sm text-center">
+                    <div class="w-12 h-12 bg-red-50 text-xin-red rounded-full flex items-center justify-center font-bold text-xl mx-auto mb-4 border border-red-100">2</div>
+                    <h3 class="font-bold text-lg mb-1">线 (血脉延伸)</h3>
+                    <p class="text-xs text-gray-400 mb-3">Target: 海外华裔及青少年</p>
+                    <p class="text-sm text-gray-500">拓展寻根内容，强化语言与身份认同的文化连接。</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl border border-gray-100 shadow-sm text-center">
+                    <div class="w-12 h-12 bg-red-50 text-xin-red rounded-full flex items-center justify-center font-bold text-xl mx-auto mb-4 border border-red-100">3</div>
+                    <h3 class="font-bold text-lg mb-1">面 (认知重塑)</h3>
+                    <p class="text-xs text-gray-400 mb-3">Target: 中国当代年轻人</p>
+                    <p class="text-sm text-gray-500">消除偏见与盲从，提升本土青年的文化自信与国际视野。</p>
+                </div>
+                <div class="bg-red-900 text-white p-6 rounded-xl shadow-lg text-center transform md:-translate-y-2">
+                    <div class="w-12 h-12 bg-white text-xin-red rounded-full flex items-center justify-center font-bold text-xl mx-auto mb-4">4</div>
+                    <h3 class="font-bold text-lg mb-1">体 (全球连接)</h3>
+                    <p class="text-xs text-red-200 mb-3">Target: 全球年轻人</p>
+                    <p class="text-sm text-red-100">形成一个立体的、无国界的文化交流生态系统。</p>
                 </div>
             </div>
         </div>
     </div>
 
-    <div id="curriculum" class="py-20 bg-stone-50">
+    <div id="ecosystem" class="py-20 bg-stone-50">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-16">
-                <span class="text-xin-red font-bold text-sm tracking-wide">CONTENT SYSTEM</span>
-                <h2 class="text-3xl font-bold mt-2">五常架构：温故而创新</h2>
-                <p class="text-gray-500 mt-2 max-w-2xl mx-auto">颠覆传统教学，将语言学习融入“仁义礼智信”的文化框架。</p>
+                <span class="text-xin-red font-bold text-sm tracking-wide uppercase">Community & Growth</span>
+                <h2 class="text-3xl font-bold mt-2">共建共享的社群生态</h2>
             </div>
-            <div class="grid md:grid-cols-3 lg:grid-cols-5 gap-4">
-                <div class="pillar-card p-6 bg-white rounded-xl relative"><div class="text-5xl text-gray-100 font-serif mb-4 absolute top-2 right-4">仁</div><h3 class="text-xl font-bold text-gray-900 mt-4">当代中国</h3><div class="text-xs font-bold text-xin-red mb-3">Ren: Empathy</div><ul class="text-sm text-gray-600 space-y-2 list-disc pl-4"><li>真实的中国生活</li><li>移动支付与通勤</li><li>跨文化情景剧</li><li>热点词汇解读</li></ul></div>
-                <div class="pillar-card p-6 bg-white rounded-xl relative"><div class="text-5xl text-gray-100 font-serif mb-4 absolute top-2 right-4">义</div><h3 class="text-xl font-bold text-gray-900 mt-4">生存工具</h3><div class="text-xs font-bold text-xin-red mb-3">Yi: Essentials</div><ul class="text-sm text-gray-600 space-y-2 list-disc pl-4"><li>HSK 场景化教学</li><li>职场邮件与会议</li><li>旅游通关指南</li><li>AI 口语评分</li></ul></div>
-                <div class="pillar-card p-6 bg-white rounded-xl relative"><div class="text-5xl text-gray-100 font-serif mb-4 absolute top-2 right-4">礼</div><h3 class="text-xl font-bold text-gray-900 mt-4">艺术修养</h3><div class="text-xs font-bold text-xin-red mb-3">Li: Etiquette</div><ul class="text-sm text-gray-600 space-y-2 list-disc pl-4"><li>书法审美入门</li><li>中华茶道与养生</li><li>基础太极</li><li>社交礼仪规范</li></ul></div>
-                <div class="pillar-card p-6 bg-white rounded-xl relative"><div class="text-5xl text-gray-100 font-serif mb-4 absolute top-2 right-4">智</div><h3 class="text-xl font-bold text-gray-900 mt-4">思想精华</h3><div class="text-xs font-bold text-xin-red mb-3">Zhi: Wisdom</div><ul class="text-sm text-gray-600 space-y-2 list-disc pl-4"><li>孔孟思想现代应用</li><li>汉字演变迷你剧</li><li>中国哲学逻辑</li><li>避免说教式宣传</li></ul></div>
-                <div class="pillar-card p-6 bg-white rounded-xl relative"><div class="text-5xl text-gray-100 font-serif mb-4 absolute top-2 right-4">信</div><h3 class="text-xl font-bold text-gray-900 mt-4">互助社群</h3><div class="text-xs font-bold text-xin-red mb-3">Xin: Trust</div><ul class="text-sm text-gray-600 space-y-2 list-disc pl-4"><li>志愿者互助挑战</li><li>中外语伴匹配</li><li>诚信积分体系</li><li>UGC 内容分享</li></ul></div>
+
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="bg-white p-8 rounded-2xl border-l-4 border-xin-red shadow-sm">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-12 h-12 bg-red-50 rounded-full flex items-center justify-center text-xin-red text-xl"><i class="fa-solid fa-chalkboard-user"></i></div>
+                        <div>
+                            <h3 class="text-xl font-bold">讲师与创作者生态</h3>
+                            <p class="text-sm text-gray-500">开放贡献 · 渐进式扩张</p>
+                        </div>
+                    </div>
+                    <div class="space-y-6">
+                        <div>
+                            <h4 class="font-bold text-gray-800 text-sm mb-2"><i class="fa-solid fa-users-viewfinder text-xin-red mr-2"></i>资源储备</h4>
+                            <p class="text-sm text-gray-600">首批动员 400+ 外籍志愿者，提供多语种对外宣传支持。</p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-800 text-sm mb-2"><i class="fa-solid fa-layer-group text-xin-red mr-2"></i>“缓慢扩张”模式</h4>
+                            <p class="text-sm text-gray-600">借鉴 Wikipedia 机制。从短视频、校对等小规模贡献开始，通过质量审核逐步升级为核心讲师。</p>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-bold text-gray-800 text-sm mb-2">激励与赋能体系</h4>
+                            <ul class="text-xs text-gray-600 space-y-2">
+                                <li><span class="font-bold text-gray-900">· 社会价值：</span>认证为文化大使，系统分享在华经验。</li>
+                                <li><span class="font-bold text-gray-900">· 服务认证：</span>提供官方证书，助力职业发展与学术简历。</li>
+                                <li><span class="font-bold text-gray-900">· 盈利分享：</span>在 NPO 目标基础上，提供最低限度的合理激励。</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-2xl border-l-4 border-blue-500 shadow-sm">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center text-blue-600 text-xl"><i class="fa-solid fa-graduation-cap"></i></div>
+                        <div>
+                            <h3 class="text-xl font-bold">学生社群拓展</h3>
+                            <p class="text-sm text-gray-500">互助 · 创造 · 传播</p>
+                        </div>
+                    </div>
+                    <div class="space-y-6">
+                        <div>
+                            <h4 class="font-bold text-gray-800 text-sm mb-2"><i class="fa-solid fa-hand-holding-heart text-blue-500 mr-2"></i>志愿者与互助 (Trust)</h4>
+                            <p class="text-sm text-gray-600">强化“信”模块。为用户精准匹配讲师与志愿者社群，提供赴华旅游、就业、留学前后的真实互助。</p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-800 text-sm mb-2"><i class="fa-solid fa-video text-blue-500 mr-2"></i>用户生成内容 (UGC)</h4>
+                            <p class="text-sm text-gray-600">鼓励学生将学习心得和在华体验制作成短视频或帖子，让学生成为下一批内容的创作者和推广者。</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
-    <div id="community" class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="bg-gray-900 rounded-3xl p-10 md:p-16 text-white relative overflow-hidden">
-                <div class="absolute top-0 right-0 w-64 h-64 bg-red-600 rounded-full blur-[100px] opacity-20"></div>
-                <div class="relative z-10 grid md:grid-cols-2 gap-12 items-center">
-                    <div>
-                        <h2 class="text-3xl font-bold mb-6">让学习像游戏一样上瘾</h2>
-                        <p class="text-gray-400 mb-8">借鉴 Duolingo 模式，通过排行榜、连胜打卡和生命值系统，驱动学习热情。</p>
-                        <div class="flex gap-6">
-                            <div class="text-center"><div class="w-12 h-12 bg-gray-800 rounded-xl flex items-center justify-center mx-auto mb-2 text-yellow-400 text-xl"><i class="fa-solid fa-trophy"></i></div><div class="text-sm font-bold">全球排行</div></div>
-                            <div class="text-center"><div class="w-12 h-12 bg-gray-800 rounded-xl flex items-center justify-center mx-auto mb-2 text-orange-500 text-xl"><i class="fa-solid fa-fire"></i></div><div class="text-sm font-bold">每日连胜</div></div>
-                            <div class="text-center"><div class="w-12 h-12 bg-gray-800 rounded-xl flex items-center justify-center mx-auto mb-2 text-red-500 text-xl"><i class="fa-solid fa-heart"></i></div><div class="text-sm font-bold">生命值系统</div></div>
-                        </div>
+    <div id="spelling-bee" class="py-24 bg-red-900 text-white relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-red-800 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 opacity-50"></div>
+        
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="text-center mb-12">
+                <div class="inline-block bg-white/10 border border-white/20 px-3 py-1 rounded-full text-xs font-bold mb-4">XinChina 年度旗舰 IP</div>
+                <h2 class="text-4xl md:text-5xl font-serif font-bold mb-4">全球“Xin”汉字拼写大会</h2>
+                <p class="text-red-200 text-lg">Xin Spelling Bee: 连接全球侨社与中文学习者的 ESG 纽带</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 mb-12">
+                <div class="bg-white/10 backdrop-blur p-6 rounded-xl border border-white/10">
+                    <h3 class="text-xl font-bold mb-4 flex items-center gap-2"><i class="fa-solid fa-bullseye text-red-400"></i> 赛事定位</h3>
+                    <p class="text-sm text-red-100 leading-relaxed">不仅仅是一场比赛，更是一个 ESG 社会联结器。整合海外侨社、领事馆、中文学校及华商企业资源。每年春秋两季举办，确保持续热度。</p>
+                </div>
+                <div class="bg-white/10 backdrop-blur p-6 rounded-xl border border-white/10">
+                    <h3 class="text-xl font-bold mb-4 flex items-center gap-2"><i class="fa-solid fa-layer-group text-red-400"></i> 多维竞技内容</h3>
+                    <ul class="text-sm text-red-100 space-y-2">
+                        <li><span class="font-bold text-white">入门级：</span>拼音大赛 (Pinyin Bee)、看图识字</li>
+                        <li><span class="font-bold text-white">进阶级：</span>成语接龙、HSK 词汇挑战</li>
+                        <li><span class="font-bold text-white">高阶级：</span>古诗词背诵、文史典故问答</li>
+                    </ul>
+                </div>
+                <div class="bg-white/10 backdrop-blur p-6 rounded-xl border border-white/10">
+                    <h3 class="text-xl font-bold mb-4 flex items-center gap-2"><i class="fa-solid fa-gift text-red-400"></i> 终极体验奖励</h3>
+                    <p class="text-sm text-red-100 leading-relaxed mb-2">核心大奖：<span class="font-bold text-white">来华往返机票 + XinChina 游学体验营</span>。</p>
+                    <p class="text-xs text-red-300">完成从“线上学习”到“线下真实体验”的闭环。另有数字化证书及赞助商文创奖励。</p>
+                </div>
+            </div>
+
+            <div class="bg-black/20 rounded-2xl p-8 border border-white/5">
+                <div class="flex flex-col md:flex-row gap-8 items-start">
+                    <div class="md:w-1/3">
+                        <h4 class="font-bold text-lg mb-2">营销策略：口碑渗透</h4>
+                        <p class="text-sm text-red-200">人人都是传声筒。利用比赛荣誉感，促使参赛者（特别是华裔家庭）在社媒自发传播，形成病毒式口碑，解决冷启动难题。</p>
                     </div>
-                    <div class="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/10">
-                        <div class="flex items-center gap-4 mb-6"><div class="w-12 h-12 rounded-full bg-blue-500 flex items-center justify-center text-xl font-bold">U</div><div><div class="font-bold">志愿者招募中</div><div class="text-xs text-gray-300">加入400+外籍讲师团队</div></div></div>
-                        <p class="text-sm text-gray-300 mb-4">"在XinChina，我不只是学习者，更是传播者。我通过短视频分享我的中国故事，获得了社区认证。"</p>
-                        <button class="w-full bg-xin-red py-3 rounded-lg font-bold hover:bg-red-700 transition">成为志愿者讲师</button>
+                    <div class="md:w-1/3">
+                        <h4 class="font-bold text-lg mb-2">渠道深耕</h4>
+                        <p class="text-sm text-red-200">联动中文学校作为考点，中国超市作为宣传点，邀请领事馆与华商会背书。设置 $5-$10 低门槛报名费筛选高意向用户。</p>
+                    </div>
+                    <div class="md:w-1/3">
+                        <h4 class="font-bold text-lg mb-2">战略意义</h4>
+                        <p class="text-sm text-red-200">激活华裔“寻根”存量，拓展非华裔增量。作为高曝光 ESG 项目，吸引出海品牌赞助，为 NPO 提供造血功能。</p>
                     </div>
                 </div>
             </div>
@@ -149,9 +233,32 @@
         <div class="max-w-7xl mx-auto px-6 text-center">
             <h2 class="text-3xl font-bold mb-4">Freemium 模式，公益导向</h2>
             <p class="text-gray-500 mb-12 max-w-2xl mx-auto">基础内容永久免费。会员订阅收入将用于支持平台运营与公益扩张。</p>
+            
             <div class="flex flex-col md:flex-row justify-center gap-8 mb-16">
-                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 w-full md:w-80"><h3 class="font-bold text-xl mb-2">Free</h3><p class="text-gray-500 text-sm mb-6">核心内容与基础互动</p><div class="text-3xl font-bold mb-6">$0</div><ul class="text-sm text-gray-600 space-y-3 mb-8 text-left"><li><i class="fa-solid fa-check text-green-500 mr-2"></i> HSK 核心词汇</li><li><i class="fa-solid fa-check text-green-500 mr-2"></i> 每日签到互动</li><li><i class="fa-solid fa-check text-green-500 mr-2"></i> "实时中国"精选</li></ul><button class="w-full border border-gray-300 py-2 rounded-lg font-bold hover:bg-gray-50">免费开始</button></div>
-                <div class="bg-white p-8 rounded-2xl shadow-xl border-t-4 border-xin-red w-full md:w-80 relative transform md:-translate-y-4"><div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-xin-red text-white text-xs px-3 py-1 rounded-full font-bold">RECOMMENDED</div><h3 class="font-bold text-xl mb-2">Premium</h3><p class="text-gray-500 text-sm mb-6">全解锁 + 公益支持</p><div class="text-3xl font-bold mb-6 text-xin-red">$9.99<span class="text-sm text-gray-400 font-normal">/mo</span></div><ul class="text-sm text-gray-600 space-y-3 mb-8 text-left"><li><i class="fa-solid fa-check text-xin-red mr-2"></i> 解锁五常全系列课程</li><li><i class="fa-solid fa-check text-xin-red mr-2"></i> 无限生命值/去广告</li><li><i class="fa-solid fa-check text-xin-red mr-2"></i> 专属讲师答疑</li><li><i class="fa-solid fa-heart text-xin-red mr-2"></i> 贡献公益奖学金</li></ul><button class="w-full bg-xin-red text-white py-2 rounded-lg font-bold hover:bg-red-800">订阅支持</button></div>
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 w-full md:w-80">
+                    <h3 class="font-bold text-xl mb-2">Free</h3>
+                    <p class="text-gray-500 text-sm mb-6">核心内容与基础互动</p>
+                    <div class="text-3xl font-bold mb-6">$0</div>
+                    <ul class="text-sm text-gray-600 space-y-3 mb-8 text-left">
+                        <li><i class="fa-solid fa-check text-green-500 mr-2"></i> HSK 核心词汇</li>
+                        <li><i class="fa-solid fa-check text-green-500 mr-2"></i> 每日签到互动</li>
+                        <li><i class="fa-solid fa-check text-green-500 mr-2"></i> "实时中国"精选</li>
+                    </ul>
+                    <button class="w-full border border-gray-300 py-2 rounded-lg font-bold hover:bg-gray-50">免费开始</button>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-xl border-t-4 border-xin-red w-full md:w-80 relative transform md:-translate-y-4">
+                    <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-xin-red text-white text-xs px-3 py-1 rounded-full font-bold">RECOMMENDED</div>
+                    <h3 class="font-bold text-xl mb-2">Premium</h3>
+                    <p class="text-gray-500 text-sm mb-6">全解锁 + 公益支持</p>
+                    <div class="text-3xl font-bold mb-6 text-xin-red">$1.99<span class="text-sm text-gray-400 font-normal">/mo</span></div>
+                    <ul class="text-sm text-gray-600 space-y-3 mb-8 text-left">
+                        <li><i class="fa-solid fa-check text-xin-red mr-2"></i> 解锁五常全系列课程</li>
+                        <li><i class="fa-solid fa-check text-xin-red mr-2"></i> 无限生命值/去广告</li>
+                        <li><i class="fa-solid fa-check text-xin-red mr-2"></i> 专属讲师答疑</li>
+                        <li><i class="fa-solid fa-heart text-xin-red mr-2"></i> 贡献公益奖学金</li>
+                    </ul>
+                    <button class="w-full bg-xin-red text-white py-2 rounded-lg font-bold hover:bg-red-800">订阅支持</button>
+                </div>
             </div>
         </div>
     </div>
