@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>鸿胪寺 Honglu Si | 在华外国人互助社区</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;700&family=Inter:wght@300;400;500;600&family=Ma+Shan+Zheng&display=swap');
+        
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; color: #334155; padding-bottom: 80px; }
+        .serif { font-family: 'Noto Serif SC', serif; }
+        
+        /* 品牌色：朱砂红 (比 XinChina 更深沉一点，代表机构) */
+        .text-honglu { color: #b91c1c; }
+        .bg-honglu { background-color: #b91c1c; }
+        .border-honglu { border-color: #b91c1c; }
+
+        /* Logo 印章 */
+        .logo-seal {
+            background-color: #b91c1c;
+            color: white;
+            font-family: 'Ma Shan Zheng', cursive;
+            border: 2px solid #7f1d1d;
+            border-radius: 4px;
+            box-shadow: inset 0 0 5px rgba(0,0,0,0.3);
+        }
+
+        /* 顶部定位栏 */
+        .location-bar {
+            background: linear-gradient(to right, #b91c1c, #991b1b);
+            color: white;
+        }
+
+        /* 功能图标 Grid */
+        .grid-icon {
+            transition: all 0.2s;
+        }
+        .grid-icon:hover {
+            transform: translateY(-3px);
+        }
+        
+        /* 底部导航栏 */
+        .bottom-nav {
+            position: fixed; bottom: 0; left: 0; width: 100%;
+            background: white; border-top: 1px solid #e2e8f0;
+            display: flex; justify-content: space-around; align-items: center;
+            padding: 10px 0; z-index: 50;
+            box-shadow: 0 -4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+        .nav-item {
+            display: flex; flex-direction: column; align-items: center;
+            color: #64748b; font-size: 10px; cursor: pointer; transition: color 0.3s;
+        }
+        .nav-item i { font-size: 20px; margin-bottom: 4px; }
+        .nav-item.active { color: #b91c1c; }
+        .nav-center-btn {
+            background: #b91c1c; color: white;
+            width: 48px; height: 48px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 24px; box-shadow: 0 4px 10px rgba(185, 28, 28, 0.4);
+            transform: translateY(-20px);
+        }
+
+        /* 轮播图 */
+        .hero-carousel {
+            height: 200px;
+            background-image: url('https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80'); /* Shanghai/Modern China */
+            background-size: cover; background-position: center;
+            position: relative;
+            border-radius: 0 0 20px 20px;
+            overflow: hidden;
+        }
+        .hero-overlay { background: linear-gradient(to top, rgba(0,0,0,0.7), transparent); }
+
+        /* 公告栏滚动 */
+        .notice-bar {
+            background: #fff1f2; color: #881337;
+            border-radius: 8px;
+            padding: 8px 12px;
+            font-size: 13px;
+            display: flex; align-items: center; gap: 8px;
+        }
+
+        /* 分类胶囊 */
+        .category-pill {
+            padding: 4px 12px; border-radius: 20px; font-size: 12px;
+            background: white; border: 1px solid #e2e8f0; color: #64748b;
+            white-space: nowrap; cursor: pointer;
+        }
+        .category-pill.active { background: #b91c1c; color: white; border-color: #b91c1c; }
+    </style>
+</head>
+<body>
+
+    <div class="sticky top-0 z-40 bg-white shadow-sm">
+        <div class="location-bar px-4 py-2 flex justify-between items-center text-xs">
+            <div class="flex items-center gap-1 cursor-pointer">
+                <i class="fa-solid fa-location-dot"></i>
+                <span class="font-bold">上海 Shanghai</span>
+                <i class="fa-solid fa-chevron-down opacity-70"></i>
+            </div>
+            <div class="flex gap-3">
+                <span><i class="fa-solid fa-cloud-sun"></i> 24°C</span>
+                <span>AQI: 45 (优)</span>
+            </div>
+        </div>
+        <div class="px-4 py-3 flex items-center gap-3">
+            <div class="flex items-center gap-2" onclick="window.location.href='xinchina.html'">
+                <div class="w-8 h-8 logo-seal flex items-center justify-center text-lg pt-1">鸿</div>
+                <div class="leading-tight">
+                    <div class="font-serif font-bold text-slate-900">鸿胪寺</div>
+                    <div class="text-[10px] text-slate-400 uppercase tracking-wide">Honglu Si</div>
+                </div>
+            </div>
+            <div class="flex-1 bg-slate-100 rounded-full px-4 py-2 flex items-center gap-2 text-slate-400 text-sm">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" placeholder="找工作、找房子、找老乡..." class="bg-transparent border-none outline-none w-full text-slate-700 placeholder-slate-400">
+            </div>
+            <i class="fa-regular fa-bell text-slate-600 text-lg relative">
+                <span class="absolute -top-1 -right-1 w-2 h-2 bg-red-500 rounded-full"></span>
+            </i>
+        </div>
+    </div>
+
+    <div class="px-4 mt-2">
+        <div class="hero-carousel shadow-lg">
+            <div class="absolute inset-0 hero-overlay"></div>
+            <div class="absolute bottom-4 left-4 right-4 text-white">
+                <span class="bg-red-600 text-[10px] px-2 py-0.5 rounded font-bold uppercase mb-1 inline-block">Featured Event</span>
+                <h2 class="font-bold text-lg leading-tight">2026 外籍人才招聘会 (北京/上海)</h2>
+                <p class="text-xs opacity-90 mt-1">连接 500+ 在华外企与全球人才</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="px-4 mt-4">
+        <div class="notice-bar">
+            <i class="fa-solid fa-volume-high"></i>
+            <div class="flex-1 truncate">
+                <span class="font-bold mr-1">[新规]</span> 2026年外国人来华工作许可积分制度更新解读...
+            </div>
+            <i class="fa-solid fa-chevron-right text-xs opacity-50"></i>
+        </div>
+    </div>
+
+    <div class="px-4 mt-6">
+        <div class="grid grid-cols-5 gap-y-6 gap-x-2 text-center">
+            <a href="#" class="grid-icon flex flex-col items-center gap-2">
+                <div class="w-10 h-10 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-xl"><i class="fa-solid fa-book-open"></i></div>
+                <span class="text-xs font-medium text-slate-600">生活指南</span>
+            </a>
+            <a href="#" class="grid-icon flex flex-col items-center gap-2">
+                <div class="w-10 h-10 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center text-xl"><i class="fa-solid fa-house-chimney"></i></div>
+                <span class="text-xs font-medium text-slate-600">找房子</span>
+            </a>
+            <a href="#" class="grid-icon flex flex-col items-center gap-2">
+                <div class="w-10 h-10 rounded-full bg-green-100 text-green-600 flex items-center justify-center text-xl"><i class="fa-solid fa-briefcase"></i></div>
+                <span class="text-xs font-medium text-slate-600">求职招聘</span>
+            </a>
+            <a href="#" class="grid-icon flex flex-col items-center gap-2">
+                <div class="w-10 h-10 rounded-full bg-yellow-100 text-yellow-600 flex items-center justify-center text-xl"><i class="fa-solid fa-shop"></i></div>
+                <span class="text-xs font-medium text-slate-600">二手/市集</span>
+            </a>
+            <a href="#" class="grid-icon flex flex-col items-center gap-2">
+                <div class="w-10 h-10 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center text-xl"><i class="fa-solid fa-comments"></i></div>
+                <span class="text-xs font-medium text-slate-600">老乡群</span>
+            </a>
+            <a href="#" class="grid-icon flex flex-col items-center gap-2">
+                <div class="w-10 h-10 rounded-full bg-pink-100 text-pink-600 flex items-center justify-center text-xl"><i class="fa-solid fa-graduation-cap"></i></div>
+                <span class="text-xs font-medium text-slate-600">留学/补习</span>
+            </a>
+            <a href="#" class="grid-icon flex flex-col items-center gap-2">
+                <div class="w-10 h-10 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center text-xl"><i class="fa-solid fa-scale-balanced"></i></div>
+                <span class="text-xs font-medium text-slate-600">法律咨询</span>
+            </a>
+            <a href="#" class="grid-icon flex flex-col items-center gap-2">
+                <div class="w-10 h-10 rounded-full bg-teal-100 text-teal-600 flex items-center justify-center text-xl"><i class="fa-solid fa-passport"></i></div>
+                <span class="text-xs font-medium text-slate-600">签证/办证</span>
+            </a>
+            <a href="#" class="grid-icon flex flex-col items-center gap-2">
+                <div class="w-10 h-10 rounded-full bg-red-100 text-red-600 flex items-center justify-center text-xl"><i class="fa-solid fa-calendar-check"></i></div>
+                <span class="text-xs font-medium text-slate-600">同城活动</span>
+            </a>
+            <a href="#" class="grid-icon flex flex-col items-center gap-2">
+                <div class="w-10 h-10 rounded-full bg-gray-100 text-gray-600 flex items-center justify-center text-xl"><i class="fa-solid fa-ellipsis"></i></div>
+                <span class="text-xs font-medium text-slate-600">全部</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="px-4 mt-8">
+        <div class="flex justify-between items-center mb-4">
+            <h3 class="font-bold text-lg text-slate-800">鸿胪·精选</h3>
+            <span class="text-xs text-slate-400">See All <i class="fa-solid fa-chevron-right text-[10px]"></i></span>
+        </div>
+        
+        <div class="space-y-4">
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 flex gap-4">
+                <div class="flex-1">
+                    <div class="flex items-center gap-2 mb-2">
+                        <span class="bg-red-100 text-red-600 text-[10px] px-1.5 py-0.5 rounded font-bold">置顶</span>
+                        <h4 class="font-bold text-sm text-slate-800 line-clamp-1">刚来中国？这5个App必须装！</h4>
+                    </div>
+                    <p class="text-xs text-slate-500 line-clamp-2 mb-2">微信支付、支付宝、滴滴出行、美团外卖...手把手教你如何绑定国外信用卡，解决支付难题。</p>
+                    <div class="flex items-center gap-2 text-[10px] text-slate-400">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" class="w-4 h-4 rounded-full">
+                        <span>David (US)</span>
+                        <span>• 2k 阅读</span>
+                    </div>
+                </div>
+                <img src="https://images.unsplash.com/photo-1596827092823-7a9c8f94602f?auto=format&fit=crop&w=200&q=80" class="w-20 h-20 rounded-lg object-cover bg-slate-100">
+            </div>
+
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 flex gap-4 relative overflow-hidden">
+                <div class="absolute top-0 right-0 bg-yellow-400 text-yellow-900 text-[9px] px-2 py-0.5 rounded-bl font-bold">新店开业</div>
+                <img src="https://images.unsplash.com/photo-1550966871-3ed3c47e2ce2?auto=format&fit=crop&w=200&q=80" class="w-20 h-20 rounded-lg object-cover bg-slate-100">
+                <div class="flex-1">
+                    <h4 class="font-bold text-sm text-slate-800 mb-1">首尔大叔烤肉 (静安店)</h4>
+                    <div class="flex text-[10px] text-yellow-500 mb-2">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+                        <span class="text-slate-400 ml-1">4.8分</span>
+                    </div>
+                    <p class="text-xs text-slate-500 mb-2">凭此贴到店，每桌赠送一份生拌牛肉！欢迎各位韩胞携带家人品尝家乡味。</p>
+                    <div class="flex gap-2">
+                        <span class="text-[10px] border border-slate-200 px-1.5 rounded text-slate-500">韩式料理</span>
+                        <span class="text-[10px] border border-slate-200 px-1.5 rounded text-slate-500">距您 1.2km</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="px-4 mt-8 pb-4">
+        <div class="flex justify-between items-center mb-4">
+            <h3 class="font-bold text-lg text-slate-800">生活黄页</h3>
+            <a href="#" class="text-xs text-honglu font-bold">商家入驻 <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+        
+        <div class="flex gap-3 overflow-x-auto pb-4 no-scrollbar">
+            <button class="category-pill active">全部</button>
+            <button class="category-pill">餐饮/超市</button>
+            <button class="category-pill">医疗/医院</button>
+            <button class="category-pill">教育/学校</button>
+            <button class="category-pill">生活服务</button>
+            <button class="category-pill">法律/签证</button>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4">
+            <div class="bg-white rounded-lg border border-slate-100 overflow-hidden shadow-sm">
+                <div class="h-24 bg-slate-200 relative">
+                    <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover">
+                    <div class="absolute bottom-1 right-1 bg-black/50 text-white text-[10px] px-1 rounded">超市</div>
+                </div>
+                <div class="p-3">
+                    <h4 class="font-bold text-sm truncate">G-Super 绿地优选</h4>
+                    <p class="text-[10px] text-slate-500 mt-1">进口食品 / 英文导购</p>
+                    <div class="mt-2 flex justify-between items-center">
+                        <span class="text-[10px] bg-green-50 text-green-600 px-1 rounded">营业中</span>
+                        <i class="fa-solid fa-location-arrow text-slate-300 text-xs"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white rounded-lg border border-slate-100 overflow-hidden shadow-sm">
+                <div class="h-24 bg-slate-200 relative">
+                    <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover">
+                    <div class="absolute bottom-1 right-1 bg-black/50 text-white text-[10px] px-1 rounded">医疗</div>
+                </div>
+                <div class="p-3">
+                    <h4 class="font-bold text-sm truncate">Jiahui International Hospital</h4>
+                    <p class="text-[10px] text-slate-500 mt-1">多语言服务 / 国际保险直付</p>
+                    <div class="mt-2 flex justify-between items-center">
+                        <span class="text-[10px] bg-green-50 text-green-600 px-1 rounded">24h 急诊</span>
+                        <i class="fa-solid fa-location-arrow text-slate-300 text-xs"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bottom-nav">
+        <div class="nav-item active">
+            <i class="fa-solid fa-house"></i>
+            <span>首页</span>
+        </div>
+        <div class="nav-item">
+            <i class="fa-regular fa-compass"></i>
+            <span>生活黄页</span>
+        </div>
+        
+        <div class="nav-item relative">
+            <div class="nav-center-btn">
+                <i class="fa-solid fa-plus"></i>
+            </div>
+            <span class="mt-6">发布</span>
+        </div>
+
+        <div class="nav-item">
+            <i class="fa-solid fa-bag-shopping"></i>
+            <span>市集</span>
+        </div>
+        <div class="nav-item">
+            <i class="fa-regular fa-user"></i>
+            <span>我的</span>
+        </div>
+    </div>
+
+</body>
+</html>
