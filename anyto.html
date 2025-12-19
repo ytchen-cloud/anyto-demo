@@ -34,21 +34,16 @@
             transition: all 0.3s ease;
         }
         
-        .missed-item {
-            filter: grayscale(100%);
-            opacity: 0.6;
-            transition: all 0.3s ease;
-        }
-        .missed-item:hover {
-            filter: grayscale(0%);
-            opacity: 1;
-        }
         .active-item {
             border: 2px solid #059669;
             box-shadow: 0 10px 25px -5px rgba(5, 150, 105, 0.15);
-            transform: scale(1.01);
         }
 
+        /* 轮播指示点 */
+        .dot { transition: all 0.3s ease; cursor: pointer; }
+        .dot.active { background-color: #059669; width: 24px; }
+
+        /* 合作伙伴轮播 */
         .marquee-container { overflow: hidden; white-space: nowrap; position: relative; }
         .marquee-content { display: inline-block; animation: marquee 30s linear infinite; }
         .marquee-content:hover { animation-play-state: paused; }
@@ -68,8 +63,8 @@
                 </div>
                 <div class="hidden md:flex items-center space-x-8">
                     <a href="#" class="text-slate-600 hover:text-emerald-600 font-medium transition">当前奖池</a>
+                    <a href="#" class="text-slate-600 hover:text-emerald-600 font-medium transition">发行日程</a>
                     <a href="#" class="text-slate-600 hover:text-emerald-600 font-medium transition">ESG 影响力</a>
-                    <a href="#" class="text-slate-600 hover:text-emerald-600 font-medium transition">社区投票</a>
                     <a href="#" class="text-slate-600 hover:text-emerald-600 font-medium transition">往期中奖</a>
                 </div>
                 <div class="flex items-center gap-4">
@@ -85,6 +80,7 @@
     <div class="relative pt-32 pb-12 lg:pt-40 lg:pb-20 overflow-hidden bg-slate-50">
         <div class="absolute top-0 right-0 w-1/2 h-full bg-emerald-50/50 rounded-bl-[100px] pointer-events-none"></div>
         <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row gap-12 items-center">
+            
             <div class="lg:w-1/2 text-center lg:text-left">
                 <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100 border border-emerald-200 text-emerald-700 text-xs font-bold mb-6">
                     <i class="fa-solid fa-earth-americas"></i> 英国合规 Prize Competition | 全球发布 (Global Launch)
@@ -97,37 +93,156 @@
                     豪宅、超跑、科技新品、现金大奖。您的每一次参与都在资助教育公平与环境可持续发展，并为您积累长期会员权益。
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                    <button class="btn-primary px-8 py-4 rounded-xl text-lg font-bold flex items-center justify-center gap-2">立即参与 <i class="fa-solid fa-arrow-right"></i></button>
+                    <button onclick="openSkillModal()" class="btn-primary px-8 py-4 rounded-xl text-lg font-bold flex items-center justify-center gap-2">立即参与 <i class="fa-solid fa-arrow-right"></i></button>
                     <button class="bg-white border-2 border-slate-200 text-slate-700 px-8 py-4 rounded-xl text-lg font-bold hover:border-emerald-500 hover:text-emerald-600 transition">查看本期奖品</button>
                 </div>
             </div>
-            <div class="lg:w-1/2 w-full">
-                 <div class="clean-card rounded-2xl p-4 active-item bg-white relative">
-                    <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-emerald-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg z-10">全球热抢中</div>
-                    <div class="text-xs font-bold text-emerald-600 mb-2 uppercase flex items-center gap-1"><span class="animate-pulse">●</span> Ends in 18 Days</div>
-                    <img src="https://images.unsplash.com/photo-1600596542815-e328d4de4bf7?auto=format&fit=crop&w=800&q=80" class="w-full h-48 object-cover rounded-lg mb-4">
-                    <div class="px-2">
-                        <div class="flex justify-between items-start mb-4">
-                            <div>
-                                <h3 class="text-xl font-bold text-slate-900">首尔近郊 · 5A级传世庄园</h3>
-                                <p class="text-sm text-slate-500 mt-1">韩国老钱、政要与顶流明星的首选退休隐居地。</p>
+
+            <div class="lg:w-1/2 w-full relative group" onmouseenter="stopSlideTimer()" onmouseleave="startSlideTimer()">
+                <div class="clean-card rounded-2xl overflow-hidden shadow-2xl relative h-[520px]">
+                    <div id="sliderTrack" class="flex transition-transform duration-500 ease-in-out h-full">
+                        
+                        <div class="w-full h-full flex-shrink-0 flex flex-col">
+                            <div class="relative h-64 sm:h-72 overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1600596542815-e328d4de4bf7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Korea Villa" class="w-full h-full object-cover">
+                                <div class="absolute top-4 right-4 bg-white/90 px-3 py-1 rounded-md text-slate-900 font-bold text-sm shadow-sm">价值 $1,200,000</div>
+                                <div class="absolute top-4 left-4 bg-emerald-600 text-white text-xs font-bold px-3 py-1 rounded shadow-lg">全球热抢中</div>
                             </div>
-                             <div class="text-right">
-                                <div class="text-sm font-bold text-slate-700">倒计时</div>
-                                <div class="text-xl font-mono text-emerald-600 font-bold">18:04:32:10</div>
+                            <div class="p-6 flex-1 flex flex-col justify-between bg-white">
+                                <div>
+                                    <h3 class="text-2xl font-bold text-slate-900 mb-1">首尔近郊 · 5A级传世庄园</h3>
+                                    <p class="text-slate-500 text-sm">韩国老钱、政要与顶流明星的首选退休隐居地。</p>
+                                    
+                                    <div class="mt-6 flex justify-between items-end mb-2">
+                                        <div class="text-sm font-bold text-slate-700">倒计时</div>
+                                        <div class="text-2xl font-mono text-emerald-600 font-bold countdown-timer">18:04:32:10</div>
+                                    </div>
+                                    <div class="w-full bg-slate-100 rounded-full h-3">
+                                        <div class="bg-emerald-500 h-3 rounded-full" style="width: 68%"></div>
+                                    </div>
+                                    <div class="flex justify-between text-xs text-slate-400 mt-1">
+                                        <span>已售 68%</span>
+                                        <span>目标 100%</span>
+                                    </div>
+                                </div>
+                                <button onclick="openSkillModal()" class="w-full bg-slate-900 text-white font-bold py-3 rounded-xl hover:bg-slate-800 transition">购买奖券 ($5.00)</button>
                             </div>
                         </div>
-                        <div class="mb-2 flex justify-between text-xs font-semibold text-slate-500">
-                            <span>已售 682,104 份</span>
-                            <span>目标 1,000,000 份</span>
+
+                        <div class="w-full h-full flex-shrink-0 relative">
+                            <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c" class="w-full h-full object-cover">
+                            <div class="absolute inset-0 bg-black/20 flex items-center justify-center group cursor-pointer hover:bg-black/30 transition">
+                                <div class="w-16 h-16 bg-white/20 backdrop-blur rounded-full flex items-center justify-center border border-white">
+                                    <i class="fa-solid fa-play text-white text-2xl ml-1"></i>
+                                </div>
+                            </div>
+                            <div class="absolute bottom-0 w-full p-6 bg-gradient-to-t from-black/80 to-transparent text-white">
+                                <h3 class="text-xl font-bold">沉浸式室内漫游</h3>
+                                <p class="text-sm opacity-90">4 卧 3 卫，全屋智能家居配置</p>
+                                <button onclick="openSkillModal()" class="mt-4 w-full bg-white text-slate-900 font-bold py-2 rounded-lg">立即参与</button>
+                            </div>
                         </div>
-                        <div class="w-full bg-slate-100 rounded-full h-3 mb-6">
-                            <div class="bg-emerald-500 h-3 rounded-full" style="width: 68%"></div>
+
+                        <div class="w-full h-full flex-shrink-0 flex flex-col p-4 bg-white">
+                            <h3 class="text-slate-900 font-bold text-lg mb-4 flex items-center gap-2"><i class="fa-solid fa-images text-emerald-600"></i> 房产相册 & 周边</h3>
+                            <div class="grid grid-cols-2 gap-2 flex-1 mb-4 h-full">
+                                <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a" class="w-full h-full object-cover rounded-lg">
+                                <img src="https://images.unsplash.com/photo-1558036117-15d82a90b9b1" class="w-full h-full object-cover rounded-lg">
+                                <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750" class="w-full h-full object-cover rounded-lg">
+                                <div class="relative rounded-lg overflow-hidden">
+                                    <img src="https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7" class="w-full h-full object-cover">
+                                    <div class="absolute inset-0 bg-black/50 flex items-center justify-center text-white font-bold">+12</div>
+                                </div>
+                            </div>
+                            <button onclick="openSkillModal()" class="w-full bg-emerald-600 text-white font-bold py-3 rounded-xl">购买奖券 ($5.00)</button>
                         </div>
-                        <button class="mt-2 w-full bg-emerald-600 text-white font-bold py-3 rounded-xl hover:bg-emerald-700 transition flex justify-between px-6">
-                            <span>立即抓住机会</span>
-                            <span>$5.00 / 份</span>
-                        </button>
+
+                        <div class="w-full h-full flex-shrink-0 flex flex-col p-4 bg-slate-900 text-white">
+                            <h3 class="font-bold text-lg mb-2"><i class="fa-solid fa-ruler-combined text-blue-400"></i> 房屋户型图</h3>
+                            <div class="flex-1 bg-blue-900/20 border border-blue-500/30 rounded-lg p-4 flex items-center justify-center relative overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1506898667254-db1cea462722?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" class="absolute inset-0 w-full h-full object-cover opacity-20 invert">
+                                <div class="relative z-10 text-center">
+                                    <div class="text-4xl font-mono mb-2">280 m²</div>
+                                    <div class="text-sm text-blue-200">Total Area</div>
+                                </div>
+                            </div>
+                            <button onclick="openSkillModal()" class="w-full mt-4 bg-white text-slate-900 font-bold py-3 rounded-xl">立即参与</button>
+                        </div>
+
+                        <div class="w-full h-full flex-shrink-0 flex flex-col p-8 bg-slate-50">
+                            <div class="text-center mb-6">
+                                <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center mx-auto mb-3 shadow text-emerald-600 text-2xl"><i class="fa-solid fa-scale-balanced"></i></div>
+                                <h3 class="text-xl font-bold text-slate-900">合规与公正声明</h3>
+                            </div>
+                            <div class="space-y-4 flex-1">
+                                <div class="bg-white p-3 rounded border border-slate-200 shadow-sm">
+                                    <div class="font-bold text-xs text-slate-400 uppercase">法律依据</div>
+                                    <div class="text-sm text-slate-700">运营于 UK Gambling Act 2005 框架下的 Prize Competition。</div>
+                                </div>
+                                <div class="bg-white p-3 rounded border border-slate-200 shadow-sm">
+                                    <div class="font-bold text-xs text-slate-400 uppercase">资金托管</div>
+                                    <div class="text-sm text-slate-700">奖池资金由 FCA 监管机构独立托管，专款专用。</div>
+                                </div>
+                                <div class="bg-white p-3 rounded border border-slate-200 shadow-sm">
+                                    <div class="font-bold text-xs text-slate-400 uppercase">开奖监督</div>
+                                    <div class="text-sm text-slate-700">第三方律师事务所全程公证并直播。</div>
+                                </div>
+                            </div>
+                            <button onclick="openSkillModal()" class="w-full btn-primary py-3 rounded-xl font-bold mt-4">了解并参与</button>
+                        </div>
+
+                    </div>
+                    <div class="absolute bottom-4 left-0 w-full flex justify-center gap-2 z-10">
+                        <div class="dot active h-2 w-6 rounded-full bg-emerald-600" onclick="goToSlide(0)"></div>
+                        <div class="dot h-2 w-2 rounded-full bg-slate-300" onclick="goToSlide(1)"></div>
+                        <div class="dot h-2 w-2 rounded-full bg-slate-300" onclick="goToSlide(2)"></div>
+                        <div class="dot h-2 w-2 rounded-full bg-slate-300" onclick="goToSlide(3)"></div>
+                        <div class="dot h-2 w-2 rounded-full bg-slate-300" onclick="goToSlide(4)"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-emerald-900 py-16 border-t border-emerald-800 text-white relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-full opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 relative z-10">
+            <h2 class="text-3xl font-bold text-center mb-16">发行日程 (Draw Dates)</h2>
+            
+            <div class="relative flex flex-col md:flex-row justify-between items-center max-w-5xl mx-auto">
+                <div class="absolute left-1/2 top-0 bottom-0 w-1 md:w-full md:h-1 md:top-1/2 md:left-0 bg-emerald-700/50 -z-0"></div>
+
+                <div class="relative z-10 flex flex-col items-center text-center mb-8 md:mb-0 group">
+                    <div class="w-4 h-4 bg-emerald-500 rounded-full mb-4 ring-4 ring-emerald-900 group-hover:ring-emerald-500 transition-all"></div>
+                    <div class="bg-emerald-800 p-4 rounded-xl border border-emerald-700 w-64 shadow-lg">
+                        <i class="fa-solid fa-flag-checkered text-emerald-400 text-2xl mb-2"></i>
+                        <h4 class="font-bold text-lg">募集开启</h4>
+                        <p class="text-xs text-emerald-200 mt-1">2026.01.01</p>
+                        <p class="text-sm text-gray-300 mt-2">早鸟票开启，社区种子用户招募。</p>
+                        <span class="inline-block mt-2 bg-emerald-900/50 text-xs px-2 py-1 rounded text-emerald-400 border border-emerald-500/30">已完成</span>
+                    </div>
+                </div>
+
+                <div class="relative z-10 flex flex-col items-center text-center mb-8 md:mb-0 transform scale-110">
+                    <div class="w-6 h-6 bg-white rounded-full mb-4 ring-8 ring-emerald-500/30 animate-pulse"></div>
+                    <div class="bg-white text-emerald-900 p-5 rounded-xl border-2 border-emerald-500 w-72 shadow-2xl">
+                        <i class="fa-solid fa-fire text-red-500 text-2xl mb-2"></i>
+                        <h4 class="font-bold text-xl">全球公售 (Live)</h4>
+                        <p class="text-xs text-emerald-600 mt-1 font-bold">NOW - 2026.03.30</p>
+                        <p class="text-sm text-slate-600 mt-2">开放全球支付，技能问答通道开启。</p>
+                        <button onclick="openSkillModal()" class="mt-3 w-full bg-emerald-600 text-white text-xs font-bold py-2 rounded hover:bg-emerald-700">立即加入</button>
+                    </div>
+                </div>
+
+                <div class="relative z-10 flex flex-col items-center text-center group">
+                    <div class="w-4 h-4 bg-emerald-500 rounded-full mb-4 ring-4 ring-emerald-900 group-hover:ring-emerald-500 transition-all"></div>
+                    <div class="bg-emerald-800 p-4 rounded-xl border border-emerald-700 w-64 shadow-lg">
+                        <i class="fa-solid fa-trophy text-yellow-400 text-2xl mb-2"></i>
+                        <h4 class="font-bold text-lg">大奖揭晓</h4>
+                        <p class="text-xs text-emerald-200 mt-1">2026.03.31</p>
+                        <p class="text-sm text-gray-300 mt-2">律师公证直播开奖，公布ESG捐赠明细。</p>
+                        <span class="inline-block mt-2 bg-emerald-900/50 text-xs px-2 py-1 rounded text-gray-400 border border-emerald-500/30">即将到来</span>
                     </div>
                 </div>
             </div>
@@ -154,7 +269,6 @@
                         <p class="text-xs text-slate-400 mt-2">Level 3 以上用户</p>
                     </div>
                 </div>
-
                 <div class="bg-white rounded-xl p-6 border border-emerald-100 shadow-sm relative overflow-hidden">
                     <div class="absolute top-0 right-0 p-4 opacity-10 text-emerald-600 text-6xl"><i class="fa-solid fa-hand-holding-heart"></i></div>
                     <div class="relative z-10">
@@ -164,24 +278,15 @@
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                             <div class="flex items-center gap-3 p-3 rounded-lg bg-green-50 border border-green-100">
                                 <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center text-green-600"><i class="fa-solid fa-tree"></i></div>
-                                <div>
-                                    <div class="font-bold text-green-700 text-lg">34,105 棵</div>
-                                    <div class="text-xs text-green-600">防风固沙树木</div>
-                                </div>
+                                <div><div class="font-bold text-green-700 text-lg">34,105 棵</div><div class="text-xs text-green-600">防风固沙树木</div></div>
                             </div>
                             <div class="flex items-center gap-3 p-3 rounded-lg bg-blue-50 border border-blue-100">
                                 <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center text-blue-600"><i class="fa-solid fa-chalkboard-user"></i></div>
-                                <div>
-                                    <div class="font-bold text-blue-700 text-lg">682 位</div>
-                                    <div class="text-xs text-blue-600">乡村支教老师 (月薪)</div>
-                                </div>
+                                <div><div class="font-bold text-blue-700 text-lg">682 位</div><div class="text-xs text-blue-600">乡村支教老师 (月薪)</div></div>
                             </div>
                             <div class="flex items-center gap-3 p-3 rounded-lg bg-red-50 border border-red-100">
                                 <div class="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center text-red-600"><i class="fa-solid fa-kit-medical"></i></div>
-                                <div>
-                                    <div class="font-bold text-red-700 text-lg">1,705 例</div>
-                                    <div class="text-xs text-red-600">紧急医疗救助包</div>
-                                </div>
+                                <div><div class="font-bold text-red-700 text-lg">1,705 例</div><div class="text-xs text-red-600">紧急医疗救助包</div></div>
                             </div>
                         </div>
                     </div>
@@ -193,35 +298,48 @@
     <div class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4">
-                    错过了往期的精彩奖品？<br>
-                    <span class="text-emerald-600">别让未来的机会也溜走。</span>
-                </h2>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4">错过了往期的精彩奖品？<br><span class="text-emerald-600">别让未来的机会也溜走。</span></h2>
                 <p class="text-slate-500">每一次犹豫，都可能是一个梦想的擦肩而过。</p>
             </div>
-
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
                 <div class="hidden md:block absolute top-1/2 left-0 w-full h-1 bg-slate-100 -z-10 -translate-y-1/2"></div>
                 <div class="clean-card rounded-xl p-4 missed-item bg-slate-50">
                     <div class="text-xs font-bold text-slate-400 mb-2 uppercase">Ended: 2024.11.15</div>
                     <img src="https://images.unsplash.com/photo-1560958089-b8a1929cea89?auto=format&fit=crop&w=500&q=80" class="w-full h-32 object-cover rounded-lg mb-3 grayscale">
                     <h3 class="font-bold text-slate-700">Tesla Model 3</h3>
-                    <p class="text-sm text-slate-500">Winner: J. Smith (UK)</p>
                     <div class="mt-3 text-center text-xs font-bold text-slate-400 border border-slate-200 rounded py-1">已结束</div>
                 </div>
                 <div class="clean-card rounded-xl p-4 missed-item bg-slate-50">
                     <div class="text-xs font-bold text-slate-400 mb-2 uppercase">Ended: 2024.12.30</div>
                     <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=500&q=80" class="w-full h-32 object-cover rounded-lg mb-3 grayscale">
                     <h3 class="font-bold text-slate-700">iPhone 15 Pro Max</h3>
-                    <p class="text-sm text-slate-500">10 Winners</p>
                     <div class="mt-3 text-center text-xs font-bold text-slate-400 border border-slate-200 rounded py-1">已结束</div>
                 </div>
                 <div class="clean-card rounded-xl p-4 missed-item bg-slate-50">
                     <div class="text-xs font-bold text-slate-400 mb-2 uppercase">Ended: 2025.02.14</div>
                     <img src="https://images.unsplash.com/photo-1580519542036-c47de6196ba5?auto=format&fit=crop&w=500&q=80" class="w-full h-32 object-cover rounded-lg mb-3 grayscale">
                     <h3 class="font-bold text-slate-700">£10,000 Cash</h3>
-                    <p class="text-sm text-slate-500">Winner: Li. W (CN)</p>
                     <div class="mt-3 text-center text-xs font-bold text-slate-400 border border-slate-200 rounded py-1">已结束</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold text-slate-900 mb-12">简单三步，实现梦想</h2>
+            <div class="grid md:grid-cols-3 gap-10">
+                <div class="flex flex-col items-center">
+                    <div class="w-20 h-20 bg-emerald-50 rounded-full flex items-center justify-center text-emerald-600 text-3xl mb-6"><i class="fa-solid fa-ticket"></i></div>
+                    <h3 class="font-bold text-xl mb-2">1. 选择奖券</h3><p class="text-slate-500 text-sm">选择您心仪的房产或奖品。</p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="w-20 h-20 bg-emerald-50 rounded-full flex items-center justify-center text-emerald-600 text-3xl mb-6"><i class="fa-solid fa-brain"></i></div>
+                    <h3 class="font-bold text-xl mb-2">2. 回答问题</h3><p class="text-slate-500 text-sm">回答简单的技能问题进入奖池。</p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="w-20 h-20 bg-emerald-50 rounded-full flex items-center justify-center text-emerald-600 text-3xl mb-6"><i class="fa-solid fa-trophy"></i></div>
+                    <h3 class="font-bold text-xl mb-2">3. 等待开奖</h3><p class="text-slate-500 text-sm">每周五直播开奖，公平公正。</p>
                 </div>
             </div>
         </div>
@@ -247,21 +365,39 @@
     </div>
 
     <div class="py-20 bg-slate-50 border-t border-slate-100">
-        <div class="max-w-3xl mx-auto px-4">
-            <h2 class="text-3xl font-bold text-slate-900 mb-8 text-center">常见问题</h2>
-            <div class="space-y-4">
-                <details class="bg-white rounded-lg p-6 cursor-pointer border border-slate-200">
-                    <summary class="font-bold text-lg text-slate-800">这真的合法吗？</summary>
-                    <p class="mt-2 text-slate-500">是的。Anyto 依据英国 2005 年赌博法案（Gambling Act 2005）作为有技能要求的“竞赛（Prize Competition）”运营，而非彩票。</p>
-                </details>
-                <details class="bg-white rounded-lg p-6 cursor-pointer border border-slate-200">
-                    <summary class="font-bold text-lg text-slate-800">资金如何保障？</summary>
-                    <p class="mt-2 text-slate-500">所有奖池资金由第三方 FCA 监管机构托管，确保 100% 安全，并在开奖后直接划转。</p>
-                </details>
-                <details class="bg-white rounded-lg p-6 cursor-pointer border border-slate-200">
-                    <summary class="font-bold text-lg text-slate-800">非英国居民可以参加吗？</summary>
-                    <p class="mt-2 text-slate-500">当然。我们的房产奖品对全球用户开放。如果您中奖但不想居住，可以选择等值的现金替代方案。</p>
-                </details>
+        <div class="max-w-7xl mx-auto px-4">
+            
+            <div class="bg-emerald-900 rounded-3xl p-10 md:p-16 text-center text-white mb-20 relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-full opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
+                <div class="relative z-10">
+                    <span class="inline-block bg-emerald-800 text-emerald-200 text-xs font-bold px-3 py-1 rounded-full mb-4">CSR & ESG</span>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">共建 Anyto 公益生态</h2>
+                    <p class="text-emerald-100 max-w-2xl mx-auto mb-8 text-lg">
+                        我们正在寻找全球合作伙伴。无论是闲置的高价值资产（房产/车辆/艺术品），还是您的志愿时间。<br>
+                        <span class="text-white font-bold underline">所有来自用户的捐赠物，将 100% 用于支持 XinChina 等 ESG 项目。</span>
+                    </p>
+                    <a href="xinchina.html" class="inline-flex items-center gap-2 bg-white text-emerald-900 px-8 py-4 rounded-xl font-bold text-lg hover:bg-emerald-50 transition shadow-lg">
+                        Support Us (联系我们) <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="max-w-3xl mx-auto">
+                <h2 class="text-3xl font-bold text-slate-900 mb-8 text-center">常见问题</h2>
+                <div class="space-y-4">
+                    <details class="bg-white rounded-lg p-6 cursor-pointer border border-slate-200">
+                        <summary class="font-bold text-lg text-slate-800">这真的合法吗？</summary>
+                        <p class="mt-2 text-slate-500">是的。Anyto 依据英国 2005 年赌博法案（Gambling Act 2005）作为有技能要求的“竞赛（Prize Competition）”运营，而非彩票。</p>
+                    </details>
+                    <details class="bg-white rounded-lg p-6 cursor-pointer border border-slate-200">
+                        <summary class="font-bold text-lg text-slate-800">资金如何保障？</summary>
+                        <p class="mt-2 text-slate-500">所有奖池资金由第三方 FCA 监管机构托管，确保 100% 安全，并在开奖后直接划转。</p>
+                    </details>
+                    <details class="bg-white rounded-lg p-6 cursor-pointer border border-slate-200">
+                        <summary class="font-bold text-lg text-slate-800">非英国居民可以参加吗？</summary>
+                        <p class="mt-2 text-slate-500">当然。我们的房产奖品对全球用户开放。如果您中奖但不想居住，可以选择等值的现金替代方案。</p>
+                    </details>
+                </div>
             </div>
         </div>
     </div>
@@ -282,5 +418,58 @@
             <p>&copy; 2026 Anyto Global Ltd. All rights reserved.</p>
         </div>
     </footer>
+
+    <div id="skillModal" class="fixed inset-0 z-[100] bg-slate-900/50 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-lg w-full p-8 shadow-2xl relative">
+            <button onclick="closeSkillModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark text-xl"></i></button>
+            <div class="text-center mb-6"><h3 class="text-2xl font-bold text-slate-900">技能挑战 (合规要求)</h3><p class="text-sm text-slate-500 mt-2">根据英国法律，您必须回答正确以下问题才能进入抽奖池。</p></div>
+            <div class="space-y-4">
+                <p class="text-slate-900 font-medium text-lg">问题：本期奖品（韩国房产）位于哪个行政区？</p>
+                <label class="flex items-center p-4 border border-slate-200 rounded-xl cursor-pointer hover:bg-emerald-50 hover:border-emerald-500 transition"><input type="radio" name="skill" class="w-5 h-5 text-emerald-600"><span class="ml-3 text-slate-700">Gangnam (江南区)</span></label>
+                <label class="flex items-center p-4 border border-slate-200 rounded-xl cursor-pointer hover:bg-emerald-50 hover:border-emerald-500 transition"><input type="radio" name="skill" class="w-5 h-5 text-emerald-600"><span class="ml-3 text-slate-700">Yangpyeong (杨平郡)</span></label>
+            </div>
+            <button onclick="closeSkillModal()" class="w-full mt-6 btn-primary py-3 rounded-xl font-bold text-lg">提交答案并支付 $5.00</button>
+        </div>
+    </div>
+
+    <script>
+        // Timer Logic
+        function updateTimer() {
+            const timers = document.querySelectorAll('.countdown-timer'); 
+            timers.forEach(timer => {
+                let time = timer.innerText.split(':');
+                let d = parseInt(time[0]), h = parseInt(time[1]), m = parseInt(time[2]), s = parseInt(time[3]);
+                s--;
+                if (s < 0) { s = 59; m--; } if (m < 0) { m = 59; h--; } if (h < 0) { h = 23; d--; }
+                timer.innerText = `${d}:${h<10?'0'+h:h}:${m<10?'0'+m:m}:${s<10?'0'+s:s}`;
+            });
+        }
+        setInterval(updateTimer, 1000);
+
+        // Slider Logic
+        let currentSlide = 0;
+        const totalSlides = 5;
+        const track = document.getElementById('sliderTrack');
+        const dots = document.querySelectorAll('.dot');
+        let slideInterval;
+
+        function updateSlider() {
+            track.style.transform = `translateX(-${currentSlide * 100}%)`;
+            dots.forEach((dot, index) => {
+                if(index === currentSlide) { dot.classList.add('active'); dot.style.backgroundColor = '#059669'; dot.style.width = '24px'; } 
+                else { dot.classList.remove('active'); dot.style.backgroundColor = '#cbd5e1'; dot.style.width = '8px'; }
+            });
+        }
+        function nextSlide() { currentSlide = (currentSlide + 1) % totalSlides; updateSlider(); }
+        function goToSlide(index) { currentSlide = index; updateSlider(); resetSlideTimer(); }
+        function startSlideTimer() { slideInterval = setInterval(nextSlide, 5000); }
+        function stopSlideTimer() { clearInterval(slideInterval); }
+        function resetSlideTimer() { stopSlideTimer(); startSlideTimer(); }
+        startSlideTimer();
+
+        // Modals
+        function openSkillModal() { document.getElementById('skillModal').classList.remove('hidden'); }
+        function closeSkillModal() { document.getElementById('skillModal').classList.add('hidden'); }
+    </script>
 </body>
 </html>
