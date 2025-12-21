@@ -8,10 +8,12 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;700&family=Inter:wght@300;400;500;600&family=Ma+Shan+Zheng&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap'); /* For Korean Text */
         
         body { font-family: 'Inter', sans-serif; background-color: #f8fafc; color: #334155; padding-bottom: 90px; }
         .serif { font-family: 'Noto Serif SC', serif; }
         .calligraphy { font-family: 'Ma Shan Zheng', cursive; }
+        .kr-font { font-family: 'Noto Sans KR', sans-serif; }
         
         /* 品牌色：朱砂红 */
         .text-honglu { color: #b91c1c; }
@@ -20,7 +22,7 @@
 
         /* Logo 印章 */
         .logo-seal {
-            background-color: #b91c1c;
+            background-color: #c0392b;
             color: white;
             font-family: 'Ma Shan Zheng', cursive;
             border: 2px solid #7f1d1d;
@@ -43,7 +45,7 @@
         }
         .hero-overlay { background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); }
 
-        /* 底部导航栏 (五大核心菜单) */
+        /* 底部导航栏 */
         .bottom-nav {
             position: fixed; bottom: 0; left: 0; width: 100%;
             background: white; border-top: 1px solid #e2e8f0;
@@ -65,6 +67,10 @@
             transform: translateY(-20px); border: 4px solid #f8fafc;
         }
 
+        /* 功能图标 */
+        .grid-icon { transition: all 0.2s; }
+        .grid-icon:hover { transform: translateY(-2px); }
+
         /* 红绿灯诚信系统 */
         .status-light { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 4px; }
         .light-green { background-color: #22c55e; box-shadow: 0 0 6px #22c55e; }
@@ -78,11 +84,23 @@
             display: inline-flex; align-items: center; gap: 2px;
         }
 
+        /* 团购与外卖卡片样式 */
+        .feature-card {
+            transition: all 0.3s ease;
+        }
+        .feature-card:active { transform: scale(0.98); }
+        
         .category-pill {
             padding: 4px 12px; border-radius: 20px; font-size: 11px;
             background: #f1f5f9; color: #64748b; white-space: nowrap;
         }
         .category-pill.active { background: #fee2e2; color: #b91c1c; font-weight: bold; }
+        
+        /* 标签 */
+        .tag { font-size: 10px; padding: 2px 6px; border-radius: 4px; font-weight: 600; }
+        .tag-help { background: #fef2f2; color: #ef4444; }
+        .tag-event { background: #f0fdf4; color: #16a34a; }
+        .tag-sale { background: #fffbeb; color: #d97706; }
     </style>
 </head>
 <body>
@@ -107,7 +125,7 @@
             </div>
             <div class="flex-1 bg-slate-100 rounded-full px-4 py-1.5 flex items-center gap-2 text-slate-400 text-xs">
                 <i class="fa-solid fa-magnifying-glass"></i>
-                <input type="text" placeholder="搜律师、找外超、查攻略..." class="bg-transparent border-none outline-none w-full text-slate-700">
+                <input type="text" placeholder="搜服务、找外超、查攻略..." class="bg-transparent border-none outline-none w-full text-slate-700">
             </div>
             <i class="fa-regular fa-bell text-slate-600 text-lg"></i>
         </div>
@@ -127,79 +145,217 @@
             </div>
         </div>
 
-        <div class="bg-red-50 text-red-800 rounded-lg p-2.5 flex items-center gap-2 text-xs border border-red-100">
-            <span class="bg-red-200 text-red-800 text-[9px] px-1 rounded font-bold">公告</span>
-            <div class="flex-1 truncate">
-                <span class="font-bold">[黑名单公示]</span> "XX 留学中介" 因欺诈行为已被平台永久清退...
-            </div>
-            <i class="fa-solid fa-angle-right text-red-300"></i>
-        </div>
-
         <div>
-            <h3 class="font-bold text-slate-800 text-sm mb-3 pl-1 border-l-4 border-red-800">在华生活指南</h3>
-            <div class="grid grid-cols-5 gap-y-4 text-center">
-                <a href="#" class="flex flex-col items-center gap-1 group">
-                    <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center text-lg group-hover:scale-110 transition"><i class="fa-brands fa-alipay"></i></div>
-                    <span class="text-[10px] text-slate-600">支付</span>
-                </a>
-                <a href="#" class="flex flex-col items-center gap-1 group">
-                    <div class="w-10 h-10 rounded-xl bg-green-50 text-green-600 flex items-center justify-center text-lg group-hover:scale-110 transition"><i class="fa-solid fa-train"></i></div>
-                    <span class="text-[10px] text-slate-600">12306</span>
-                </a>
-                <a href="#" class="flex flex-col items-center gap-1 group">
-                    <div class="w-10 h-10 rounded-xl bg-orange-50 text-orange-600 flex items-center justify-center text-lg group-hover:scale-110 transition"><i class="fa-solid fa-passport"></i></div>
-                    <span class="text-[10px] text-slate-600">签证</span>
-                </a>
-                <a href="#" class="flex flex-col items-center gap-1 group">
-                    <div class="w-10 h-10 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-lg group-hover:scale-110 transition"><i class="fa-solid fa-scale-balanced"></i></div>
-                    <span class="text-[10px] text-slate-600">法律</span>
-                </a>
-                <a href="#" class="flex flex-col items-center gap-1 group">
-                    <div class="w-10 h-10 rounded-xl bg-pink-50 text-pink-600 flex items-center justify-center text-lg group-hover:scale-110 transition"><i class="fa-solid fa-child-reaching"></i></div>
-                    <span class="text-[10px] text-slate-600">入学</span>
-                </a>
+            <div class="flex justify-between items-center mb-3 px-1">
+                <h3 class="font-bold text-slate-800 text-sm">必备神器 (Essentials)</h3>
+                <span class="text-xs text-slate-400">教程与下载 <i class="fa-solid fa-angle-right"></i></span>
             </div>
-        </div>
-
-        <div>
-            <h3 class="font-bold text-slate-800 text-sm mb-3 pl-1 border-l-4 border-red-800">垂直社群 (Sub-Forums)</h3>
-            <div class="flex gap-3 overflow-x-auto pb-2 no-scrollbar">
-                <div class="min-w-[80px] h-20 bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-2 flex flex-col justify-between border border-blue-200">
-                    <span class="text-xl">🇰🇷</span>
-                    <span class="text-[10px] font-bold text-blue-900">韩国社群</span>
+            <div class="flex justify-between gap-2 overflow-x-auto pb-2 no-scrollbar text-center">
+                <div class="min-w-[60px] cursor-pointer group">
+                    <div class="w-12 h-12 bg-blue-500 rounded-xl mx-auto flex items-center justify-center text-white text-2xl shadow-sm mb-1 group-hover:scale-105 transition"><i class="fa-brands fa-alipay"></i></div><span class="text-[10px] text-slate-600">支付宝</span>
                 </div>
-                <div class="min-w-[80px] h-20 bg-gradient-to-br from-red-50 to-red-100 rounded-lg p-2 flex flex-col justify-between border border-red-200">
-                    <span class="text-xl">🇯🇵</span>
-                    <span class="text-[10px] font-bold text-red-900">日本社群</span>
+                <div class="min-w-[60px] cursor-pointer group">
+                    <div class="w-12 h-12 bg-green-500 rounded-xl mx-auto flex items-center justify-center text-white text-2xl shadow-sm mb-1 group-hover:scale-105 transition"><i class="fa-brands fa-weixin"></i></div><span class="text-[10px] text-slate-600">微信</span>
                 </div>
-                <div class="min-w-[80px] h-20 bg-gradient-to-br from-orange-50 to-orange-100 rounded-lg p-2 flex flex-col justify-between border border-orange-200">
-                    <span class="text-xl">🇮🇳</span>
-                    <span class="text-[10px] font-bold text-orange-900">印度社群</span>
+                <div class="min-w-[60px] cursor-pointer group">
+                    <div class="w-12 h-12 bg-orange-500 rounded-xl mx-auto flex items-center justify-center text-white text-xl shadow-sm mb-1 group-hover:scale-105 transition"><i class="fa-solid fa-utensils"></i></div><span class="text-[10px] text-slate-600">点评</span>
                 </div>
-                <div class="min-w-[80px] h-20 bg-gradient-to-br from-purple-50 to-purple-100 rounded-lg p-2 flex flex-col justify-between border border-purple-200">
-                    <span class="text-xl">🇷🇺</span>
-                    <span class="text-[10px] font-bold text-purple-900">俄语社群</span>
+                <div class="min-w-[60px] cursor-pointer group">
+                    <div class="w-12 h-12 bg-blue-600 rounded-xl mx-auto flex items-center justify-center text-white text-xl shadow-sm mb-1 group-hover:scale-105 transition"><i class="fa-solid fa-train"></i></div><span class="text-[10px] text-slate-600">12306</span>
+                </div>
+                <div class="min-w-[60px] cursor-pointer group">
+                    <div class="w-12 h-12 bg-red-500 rounded-xl mx-auto flex items-center justify-center text-white text-xl shadow-sm mb-1 group-hover:scale-105 transition"><i class="fa-solid fa-map-location-dot"></i></div><span class="text-[10px] text-slate-600">高德</span>
                 </div>
             </div>
         </div>
 
-        <div class="bg-amber-50 rounded-xl p-4 border border-amber-100 relative overflow-hidden">
-            <div class="absolute -right-2 -top-2 text-amber-100 text-6xl opacity-50"><i class="fa-solid fa-hand-holding-heart"></i></div>
-            <div class="relative z-10">
-                <div class="flex justify-between items-center mb-2">
-                    <h3 class="font-bold text-amber-900 text-sm flex items-center gap-1">
-                        <i class="fa-solid fa-award"></i> 善行在华 (Heart of InChina)
-                    </h3>
-                    <span class="text-[9px] text-amber-700 bg-amber-200 px-1.5 py-0.5 rounded">公益荣誉榜</span>
-                </div>
-                <div class="flex gap-3 items-center bg-white p-2 rounded-lg shadow-sm">
-                    <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=100&q=80" class="w-10 h-10 rounded object-cover">
-                    <div class="flex-1">
-                        <div class="flex justify-between">
-                            <h4 class="text-xs font-bold text-slate-800">Global Care 诊所</h4>
-                            <span class="heart-badge"><i class="fa-solid fa-heart"></i> 公益商家</span>
+        <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-100">
+            <div class="grid grid-cols-5 gap-y-6 gap-x-2 text-center">
+                <a href="#hanfood" class="grid-icon flex flex-col items-center gap-2">
+                    <div class="w-10 h-10 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center text-lg"><i class="fa-solid fa-bowl-food"></i></div>
+                    <span class="text-xs font-medium text-slate-600">韩食通</span>
+                </a>
+                <a href="#groupbuy" class="grid-icon flex flex-col items-center gap-2">
+                    <div class="w-10 h-10 rounded-full bg-pink-100 text-pink-600 flex items-center justify-center text-lg"><i class="fa-solid fa-users-line"></i></div>
+                    <span class="text-xs font-medium text-slate-600">团购</span>
+                </a>
+                <a href="#" class="grid-icon flex flex-col items-center gap-2">
+                    <div class="w-10 h-10 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center text-lg"><i class="fa-solid fa-briefcase"></i></div>
+                    <span class="text-xs font-medium text-slate-600">求职招聘</span>
+                </a>
+                <a href="#" class="grid-icon flex flex-col items-center gap-2">
+                    <div class="w-10 h-10 rounded-full bg-green-50 text-green-600 flex items-center justify-center text-lg"><i class="fa-solid fa-scale-balanced"></i></div>
+                    <span class="text-xs font-medium text-slate-600">法律援助</span>
+                </a>
+                <a href="#" class="grid-icon flex flex-col items-center gap-2">
+                    <div class="w-10 h-10 rounded-full bg-purple-50 text-purple-600 flex items-center justify-center text-lg"><i class="fa-solid fa-earth-americas"></i></div>
+                    <span class="text-xs font-medium text-slate-600">老乡群</span>
+                </a>
+                <a href="#" class="grid-icon flex flex-col items-center gap-2">
+                    <div class="w-10 h-10 rounded-full bg-yellow-50 text-yellow-600 flex items-center justify-center text-lg"><i class="fa-solid fa-hand-holding-dollar"></i></div>
+                    <span class="text-xs font-medium text-slate-600">二手/房产</span>
+                </a>
+                <a href="#" class="grid-icon flex flex-col items-center gap-2">
+                    <div class="w-10 h-10 rounded-full bg-indigo-50 text-indigo-600 flex items-center justify-center text-lg"><i class="fa-solid fa-passport"></i></div>
+                    <span class="text-xs font-medium text-slate-600">签证办证</span>
+                </a>
+                <a href="#" class="grid-icon flex flex-col items-center gap-2">
+                    <div class="w-10 h-10 rounded-full bg-teal-50 text-teal-600 flex items-center justify-center text-lg"><i class="fa-solid fa-hospital"></i></div>
+                    <span class="text-xs font-medium text-slate-600">国际医疗</span>
+                </a>
+                <a href="#" class="grid-icon flex flex-col items-center gap-2">
+                    <div class="w-10 h-10 rounded-full bg-red-50 text-red-600 flex items-center justify-center text-lg"><i class="fa-solid fa-calendar-check"></i></div>
+                    <span class="text-xs font-medium text-slate-600">同城活动</span>
+                </a>
+                <a href="#" class="grid-icon flex flex-col items-center gap-2">
+                    <div class="w-10 h-10 rounded-full bg-gray-100 text-gray-500 flex items-center justify-center text-lg"><i class="fa-solid fa-ellipsis"></i></div>
+                    <span class="text-xs font-medium text-slate-600">全部</span>
+                </a>
+            </div>
+        </div>
+
+        <div id="hanfood" class="space-y-4">
+            <h3 class="font-bold text-slate-800 text-sm pl-1 border-l-4 border-red-800">InChina 专属服务</h3>
+            
+            <div class="bg-gradient-to-r from-orange-50 to-orange-100 rounded-xl p-4 border border-orange-200 relative overflow-hidden feature-card cursor-pointer">
+                <div class="absolute right-0 bottom-0 w-24 h-24 bg-orange-200 rounded-full blur-2xl opacity-50"></div>
+                <div class="flex justify-between items-start relative z-10">
+                    <div>
+                        <div class="flex items-center gap-2 mb-1">
+                            <span class="text-lg font-bold text-orange-900">韩食通</span>
+                            <span class="text-xs font-bold text-orange-700 kr-font">배달通</span>
+                            <span class="bg-white/50 text-orange-800 text-[9px] px-1.5 py-0.5 rounded font-bold border border-orange-200">垂直外卖</span>
                         </div>
-                        <p class="text-[9px] text-slate-500 mt-0.5">提供每月 10 个免费外籍急诊名额。</p>
+                        <p class="text-xs text-orange-800/80 mb-3 w-4/5">中韩双语 · 微信直达 · 正宗韩料<br>服务在华韩籍人士与韩餐发烧友。</p>
+                        <div class="flex gap-2">
+                            <img src="https://images.unsplash.com/photo-1599021406444-257a31e34227?auto=format&fit=crop&w=100&q=80" class="w-10 h-10 rounded-lg object-cover border-2 border-white shadow-sm">
+                            <img src="https://images.unsplash.com/photo-1580651315530-69c8e0026377?auto=format&fit=crop&w=100&q=80" class="w-10 h-10 rounded-lg object-cover border-2 border-white shadow-sm">
+                            <div class="w-10 h-10 rounded-lg bg-white/60 flex items-center justify-center text-orange-600 text-xs font-bold border-2 border-white shadow-sm">+500</div>
+                        </div>
+                    </div>
+                    <div class="bg-orange-600 text-white rounded-full w-10 h-10 flex items-center justify-center shadow-lg shadow-orange-300 animate-bounce">
+                        <i class="fa-solid fa-utensils"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div id="groupbuy" class="bg-gradient-to-r from-pink-50 to-pink-100 rounded-xl p-4 border border-pink-200 relative overflow-hidden feature-card cursor-pointer">
+                <div class="absolute right-0 bottom-0 w-24 h-24 bg-pink-200 rounded-full blur-2xl opacity-50"></div>
+                <div class="flex justify-between items-start relative z-10">
+                    <div>
+                        <div class="flex items-center gap-2 mb-1">
+                            <span class="text-lg font-bold text-pink-900">InChina 团团</span>
+                            <span class="bg-white/50 text-pink-800 text-[9px] px-1.5 py-0.5 rounded font-bold border border-pink-200">信任裂变</span>
+                        </div>
+                        <p class="text-xs text-pink-800/80 mb-3 w-4/5">团长担保 · 一键帮卖 · 自动分佣<br>基于“信任关系”的社区团购工具。</p>
+                        
+                        <div class="bg-white/60 rounded-lg p-2 flex items-center gap-3 w-fit pr-4">
+                            <div class="flex -space-x-2">
+                                <img class="w-6 h-6 rounded-full border border-white" src="https://randomuser.me/api/portraits/women/11.jpg">
+                                <img class="w-6 h-6 rounded-full border border-white" src="https://randomuser.me/api/portraits/men/12.jpg">
+                                <img class="w-6 h-6 rounded-full border border-white" src="https://randomuser.me/api/portraits/women/13.jpg">
+                            </div>
+                            <div class="text-[9px] text-pink-900">
+                                <span class="font-bold">Lisa团长</span> 正在开团...<br>
+                                <span class="text-red-500 font-bold">仅剩 5 份</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-pink-600 text-white rounded-full w-10 h-10 flex items-center justify-center shadow-lg shadow-pink-300">
+                        <i class="fa-solid fa-gift"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <div class="flex justify-between items-center mb-3 px-1">
+                <h3 class="font-bold text-lg text-slate-800 flex items-center gap-2">
+                    <i class="fa-solid fa-fire text-red-500"></i> 圈子热议
+                </h3>
+                <div class="flex gap-2 text-xs">
+                    <span class="px-2 py-1 bg-slate-100 rounded-full text-slate-500">最新</span>
+                    <span class="px-2 py-1 bg-red-50 text-red-600 rounded-full font-bold">最热</span>
+                </div>
+            </div>
+            
+            <div class="space-y-3">
+                <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 active:bg-slate-50 transition cursor-pointer">
+                    <div class="flex gap-3">
+                        <div class="flex-1">
+                            <div class="flex items-center gap-2 mb-1">
+                                <span class="tag tag-help">求助</span>
+                                <h4 class="font-bold text-sm text-slate-800 line-clamp-1">如何在上海办理临时住宿登记？急！</h4>
+                            </div>
+                            <p class="text-xs text-slate-500 line-clamp-2 mb-3">刚搬到静安区，房东说要去派出所，请问需要带什么材料？</p>
+                            <div class="flex items-center justify-between text-[10px] text-slate-400">
+                                <div class="flex items-center gap-2">
+                                    <img src="https://randomuser.me/api/portraits/women/44.jpg" class="w-4 h-4 rounded-full">
+                                    <span>Anna (DE)</span>
+                                </div>
+                                <div class="flex gap-3"><span><i class="fa-regular fa-comment"></i> 12</span><span><i class="fa-regular fa-eye"></i> 305</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-amber-50 p-4 rounded-xl border border-amber-100 relative overflow-hidden">
+                    <div class="absolute -right-2 -top-2 text-amber-100 text-6xl opacity-50"><i class="fa-solid fa-hand-holding-heart"></i></div>
+                    <div class="relative z-10">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="font-bold text-amber-900 text-sm flex items-center gap-1"><i class="fa-solid fa-award"></i> 善行在华</h3>
+                            <span class="heart-badge"><i class="fa-solid fa-heart"></i> 公益荣誉</span>
+                        </div>
+                        <div class="flex gap-3 items-center bg-white p-2 rounded-lg shadow-sm">
+                            <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=100&q=80" class="w-10 h-10 rounded object-cover">
+                            <div class="flex-1">
+                                <div class="flex justify-between"><h4 class="text-xs font-bold text-slate-800">Global Care 诊所</h4></div>
+                                <p class="text-[9px] text-slate-500 mt-0.5">提供每月 10 个免费外籍急诊名额。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="pb-4">
+            <div class="flex justify-between items-center mb-3 px-1">
+                <h3 class="font-bold text-lg text-slate-800">良心推荐</h3>
+                <span class="text-[10px] text-slate-400">按"良心分"排序 <i class="fa-solid fa-arrow-down-wide-short"></i></span>
+            </div>
+            <div class="space-y-3">
+                <div class="bg-white p-3 rounded-xl border border-slate-100 shadow-sm flex gap-3">
+                    <div class="relative w-20 h-20 flex-shrink-0">
+                        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=200&q=80" class="w-full h-full object-cover rounded-lg">
+                        <div class="absolute top-0 left-0 bg-green-500 text-white text-[8px] px-1 rounded-br font-bold">4.9分</div>
+                    </div>
+                    <div class="flex-1">
+                        <h4 class="font-bold text-sm text-slate-800">Mama Lee's Kitchen</h4>
+                        <div class="flex items-center gap-2 mt-1">
+                            <span class="text-[9px] border border-slate-200 px-1 rounded text-slate-500">韩餐</span>
+                            <div class="flex items-center text-[9px] bg-green-50 text-green-700 px-1.5 py-0.5 rounded border border-green-100">
+                                <span class="status-light light-green"></span> 绿灯: 诚信商家
+                            </div>
+                        </div>
+                        <div class="mt-2 flex justify-between items-center">
+                            <span class="text-[10px] text-red-500 bg-red-50 px-1 rounded">新店欢迎券</span>
+                            <span class="text-[10px] text-slate-400">1.2km</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white p-3 rounded-xl border border-slate-100 shadow-sm flex gap-3 opacity-80">
+                    <div class="relative w-20 h-20 flex-shrink-0">
+                        <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=200&q=80" class="w-full h-full object-cover rounded-lg grayscale">
+                        <div class="absolute top-0 left-0 bg-yellow-500 text-white text-[8px] px-1 rounded-br font-bold">3.2分</div>
+                    </div>
+                    <div class="flex-1">
+                        <h4 class="font-bold text-sm text-slate-700">City Bar & Grill</h4>
+                        <div class="flex items-center gap-2 mt-1">
+                            <span class="text-[9px] border border-slate-200 px-1 rounded text-slate-500">西餐</span>
+                            <div class="flex items-center text-[9px] bg-yellow-50 text-yellow-700 px-1.5 py-0.5 rounded border border-yellow-100">
+                                <span class="status-light light-yellow"></span> 黄灯: 服务预警
+                            </div>
+                        </div>
+                        <p class="text-[10px] text-slate-400 mt-2">近期有3条关于卫生投诉。</p>
                     </div>
                 </div>
             </div>
@@ -207,51 +363,12 @@
 
     </div>
 
-    <div class="px-4 mt-8">
-        <div class="flex justify-between items-end mb-4">
-            <h3 class="font-bold text-lg text-slate-800">良心推荐 (Integrity Picks)</h3>
-            <span class="text-[10px] text-slate-400">按"良心分"排序 <i class="fa-solid fa-arrow-down-wide-short"></i></span>
-        </div>
-        
-        <div class="space-y-4 mb-20">
-            <div class="bg-white p-3 rounded-xl border border-slate-100 shadow-sm flex gap-3">
-                <div class="relative w-20 h-20 flex-shrink-0">
-                    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=200&q=80" class="w-full h-full object-cover rounded-lg">
-                    <div class="absolute top-0 left-0 bg-green-500 text-white text-[8px] px-1 rounded-br font-bold">4.9分</div>
-                </div>
-                <div class="flex-1">
-                    <h4 class="font-bold text-sm text-slate-800">Mama Lee's Kitchen</h4>
-                    <div class="flex items-center gap-2 mt-1">
-                        <span class="text-[9px] border border-slate-200 px-1 rounded text-slate-500">韩餐</span>
-                        <div class="flex items-center text-[9px] bg-green-50 text-green-700 px-1.5 py-0.5 rounded border border-green-100">
-                            <span class="status-light light-green"></span> 绿灯: 诚信商家
-                        </div>
-                    </div>
-                    <p class="text-[10px] text-slate-400 mt-2 line-clamp-1">"味道正宗，老板娘人很好，送了小菜。"</p>
-                    <div class="mt-2 flex justify-between items-center">
-                        <span class="text-[10px] text-red-500 bg-red-50 px-1 rounded">新店欢迎券</span>
-                        <span class="text-[10px] text-slate-400">1.2km</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="bg-white p-3 rounded-xl border border-slate-100 shadow-sm flex gap-3 opacity-80">
-                <div class="relative w-20 h-20 flex-shrink-0">
-                    <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=200&q=80" class="w-full h-full object-cover rounded-lg grayscale">
-                    <div class="absolute top-0 left-0 bg-yellow-500 text-white text-[8px] px-1 rounded-br font-bold">3.2分</div>
-                </div>
-                <div class="flex-1">
-                    <h4 class="font-bold text-sm text-slate-700">City Bar & Grill</h4>
-                    <div class="flex items-center gap-2 mt-1">
-                        <span class="text-[9px] border border-slate-200 px-1 rounded text-slate-500">西餐</span>
-                        <div class="flex items-center text-[9px] bg-yellow-50 text-yellow-700 px-1.5 py-0.5 rounded border border-yellow-100">
-                            <span class="status-light light-yellow"></span> 黄灯: 服务预警
-                        </div>
-                    </div>
-                    <p class="text-[10px] text-slate-400 mt-2">近期有3条关于卫生投诉，请谨慎前往。</p>
-                </div>
-            </div>
-        </div>
+    <div class="px-4 py-8 text-center border-t border-slate-100 bg-white">
+        <a href="xinchina.html" class="inline-flex items-center gap-2 opacity-60 hover:opacity-100 transition mb-2">
+            <div class="w-5 h-5 bg-slate-200 rounded-full flex items-center justify-center text-[10px] font-bold text-slate-500">X</div>
+            <span class="text-xs text-slate-500 font-medium">Part of <span class="text-red-800 font-bold">XinChina</span> Ecosystem</span>
+        </a>
+        <p class="text-[10px] text-slate-300">&copy; 2025 Honglu Si. Community Driven.</p>
     </div>
 
     <div class="bottom-nav">
@@ -263,14 +380,10 @@
             <i class="fa-solid fa-map-location-dot"></i>
             <span>大众点评</span>
         </div>
-        
         <div class="nav-item relative">
-            <div class="nav-center-btn shadow-lg active:scale-95 transition">
-                <i class="fa-solid fa-plus"></i>
-            </div>
+            <div class="nav-center-btn shadow-lg active:scale-95 transition"><i class="fa-solid fa-plus"></i></div>
             <span class="mt-7 font-medium text-slate-600">发布</span>
         </div>
-
         <div class="nav-item">
             <i class="fa-solid fa-shop"></i>
             <span>市场</span>
@@ -279,12 +392,6 @@
             <i class="fa-solid fa-user"></i>
             <span>我的</span>
         </div>
-    </div>
-
-    <div class="text-center pb-24 pt-8 text-xs text-slate-300">
-        <a href="xinchina.html" class="underline hover:text-red-800">XinChina</a> | 
-        <a href="anyto.html" class="underline hover:text-green-600">Anyto</a>
-        <br> Part of XinChina Ecosystem
     </div>
 
 </body>
