@@ -37,13 +37,12 @@
         .active-item {
             border: 2px solid #059669;
             box-shadow: 0 10px 25px -5px rgba(5, 150, 105, 0.15);
+            transform: scale(1.01);
         }
 
-        /* 轮播指示点 */
         .dot { transition: all 0.3s ease; cursor: pointer; }
         .dot.active { background-color: #059669; width: 24px; }
 
-        /* 合作伙伴轮播 */
         .marquee-container { overflow: hidden; white-space: nowrap; position: relative; }
         .marquee-content { display: inline-block; animation: marquee 30s linear infinite; }
         .marquee-content:hover { animation-play-state: paused; }
@@ -83,7 +82,6 @@
     <div class="relative pt-32 pb-12 lg:pt-40 lg:pb-20 overflow-hidden bg-slate-50">
         <div class="absolute top-0 right-0 w-1/2 h-full bg-emerald-50/50 rounded-bl-[100px] pointer-events-none"></div>
         <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row gap-12 items-center">
-            
             <div class="lg:w-1/2 text-center lg:text-left">
                 <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100 border border-emerald-200 text-emerald-700 text-xs font-bold mb-6">
                     <i class="fa-solid fa-earth-americas"></i> 英国合规 Prize Competition | 全球发布 (Global Launch)
@@ -100,11 +98,9 @@
                     <button class="bg-white border-2 border-slate-200 text-slate-700 px-8 py-4 rounded-xl text-lg font-bold hover:border-emerald-500 hover:text-emerald-600 transition">查看本期奖品</button>
                 </div>
             </div>
-
             <div class="lg:w-1/2 w-full relative group" onmouseenter="stopSlideTimer()" onmouseleave="startSlideTimer()">
                 <div class="clean-card rounded-2xl overflow-hidden shadow-2xl relative h-[520px]">
                     <div id="sliderTrack" class="flex transition-transform duration-500 ease-in-out h-full">
-                        
                         <div class="w-full h-full flex-shrink-0 flex flex-col">
                             <div class="relative h-64 sm:h-72 overflow-hidden">
                                 <img src="https://images.unsplash.com/photo-1600596542815-e328d4de4bf7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Korea Villa" class="w-full h-full object-cover">
@@ -125,7 +121,6 @@
                                 <button onclick="openSkillModal()" class="w-full bg-slate-900 text-white font-bold py-3 rounded-xl hover:bg-slate-800 transition">购买奖券 ($5.00)</button>
                             </div>
                         </div>
-
                         <div class="w-full h-full flex-shrink-0 relative">
                             <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c" class="w-full h-full object-cover">
                             <div class="absolute inset-0 bg-black/20 flex items-center justify-center group cursor-pointer hover:bg-black/30 transition">
@@ -137,7 +132,6 @@
                                 <button onclick="openSkillModal()" class="mt-4 w-full bg-white text-slate-900 font-bold py-2 rounded-lg">立即参与</button>
                             </div>
                         </div>
-
                         <div class="w-full h-full flex-shrink-0 flex flex-col p-4 bg-white">
                             <h3 class="text-slate-900 font-bold text-lg mb-4 flex items-center gap-2"><i class="fa-solid fa-images text-emerald-600"></i> 房产相册 & 周边</h3>
                             <div class="grid grid-cols-2 gap-2 flex-1 mb-4 h-full">
@@ -148,7 +142,6 @@
                             </div>
                             <button onclick="openSkillModal()" class="w-full bg-emerald-600 text-white font-bold py-3 rounded-xl">购买奖券 ($5.00)</button>
                         </div>
-
                         <div class="w-full h-full flex-shrink-0 flex flex-col p-4 bg-slate-900 text-white">
                             <h3 class="font-bold text-lg mb-2"><i class="fa-solid fa-ruler-combined text-blue-400"></i> 房屋户型图</h3>
                             <div class="flex-1 bg-blue-900/20 border border-blue-500/30 rounded-lg p-4 flex items-center justify-center relative overflow-hidden">
@@ -157,7 +150,6 @@
                             </div>
                             <button onclick="openSkillModal()" class="w-full mt-4 bg-white text-slate-900 font-bold py-3 rounded-xl">立即参与</button>
                         </div>
-
                         <div class="w-full h-full flex-shrink-0 flex flex-col p-8 bg-slate-50">
                             <div class="text-center mb-6"><div class="w-12 h-12 bg-white rounded-full flex items-center justify-center mx-auto mb-3 shadow text-emerald-600 text-2xl"><i class="fa-solid fa-scale-balanced"></i></div><h3 class="text-xl font-bold text-slate-900">合规与公正声明</h3></div>
                             <div class="space-y-4 flex-1">
@@ -212,11 +204,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="clean-card rounded-2xl p-8 bg-slate-50/50">
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8 divide-y md:divide-y-0 md:divide-x divide-slate-200 mb-8">
-                    <div class="text-center md:text-left md:px-6">
-                        <h3 class="text-sm font-bold text-slate-500 uppercase tracking-wide">本期 ESG 累积池</h3>
-                        <div class="text-5xl font-bold text-emerald-600 font-mono tracking-tight mt-2">$341,052</div>
-                        <p class="text-xs text-slate-400 mt-2 flex items-center justify-center md:justify-start gap-1"><i class="fa-solid fa-check-circle text-emerald-500"></i> 数据已在链上验证</p>
-                    </div>
+                    <div class="text-center md:text-left md:px-6"><h3 class="text-sm font-bold text-slate-500 uppercase tracking-wide">本期 ESG 累积池</h3><div class="text-5xl font-bold text-emerald-600 font-mono tracking-tight mt-2">$341,052</div><p class="text-xs text-slate-400 mt-2 flex items-center justify-center md:justify-start gap-1"><i class="fa-solid fa-check-circle text-emerald-500"></i> 数据已在链上验证</p></div>
                     <div class="text-center md:text-left pt-8 md:pt-0 md:px-6"><h3 class="text-sm font-bold text-slate-500 uppercase tracking-wide">主力基金收益率 (APY)</h3><div class="text-5xl font-bold text-amber-500 font-mono tracking-tight mt-2">12.5%</div><p class="text-xs text-slate-400 mt-2">由 FCA 监管资产机构托管</p></div>
                     <div class="text-center md:text-left pt-8 md:pt-0 md:px-6"><h3 class="text-sm font-bold text-slate-500 uppercase tracking-wide">已产生公益英雄</h3><div class="text-5xl font-bold text-blue-600 font-mono tracking-tight mt-2">12,403</div><p class="text-xs text-slate-400 mt-2">Level 3 以上用户</p></div>
                 </div>
@@ -254,7 +242,7 @@
                 <div class="relative z-10">
                     <span class="inline-block bg-emerald-800 text-emerald-200 text-xs font-bold px-3 py-1 rounded-full mb-4">CSR & ESG</span>
                     <h2 class="text-3xl md:text-4xl font-bold mb-4">共建 AnyWin 公益生态</h2>
-                    <p class="text-emerald-100 max-w-2xl mx-auto mb-8 text-lg">我们正在寻找全球合作伙伴。<br><span class="text-white font-bold underline">所有来自用户的捐赠物，将 100% 用于支持 XinChina 等 ESG 项目。</span></p>
+                    <p class="text-emerald-100 max-w-2xl mx-auto mb-8 text-lg">我们正在寻找全球合作伙伴。<br><span class="text-white font-bold underline">所有来自用户的捐赠物，将 100% 用于支持文行中国 (XinChina) 等 ESG 项目。</span></p>
                     <a href="xinchina.html" class="inline-flex items-center gap-2 bg-white text-emerald-900 px-8 py-4 rounded-xl font-bold text-lg hover:bg-emerald-50 transition shadow-lg">Support Us (联系我们) <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
             </div>
@@ -272,10 +260,10 @@
     <div class="bg-white py-10 border-t border-slate-100">
         <div class="marquee-container">
             <div class="marquee-content">
-                <a href="xinchina.html" class="inline-flex items-center gap-2 mx-8 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition"><div class="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center text-red-600 font-bold font-serif">XC</div><span class="font-bold text-lg text-slate-700">XinChina</span></a>
+                <a href="xinchina.html" class="inline-flex items-center gap-2 mx-8 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition"><div class="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center text-red-600 font-bold font-serif">XC</div><span class="font-bold text-lg text-slate-700">文行中国 XinChina</span></a>
+                <a href="inchina.html" class="inline-flex items-center gap-2 mx-8 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition"><div class="w-10 h-10 bg-red-900 rounded-full flex items-center justify-center text-white font-bold font-serif border border-red-700 text-xs">文</div><span class="font-bold text-lg text-slate-700">文在中国 InChina</span></a>
                 <a href="#" class="inline-flex items-center gap-2 mx-8 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition"><i class="fa-solid fa-earth-asia text-blue-500 text-3xl"></i><span class="font-bold text-lg text-slate-700">Green Earth HK</span></a>
-                <a href="#" class="inline-flex items-center gap-2 mx-8 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition"><i class="fa-solid fa-seedling text-green-500 text-3xl"></i><span class="font-bold text-lg text-slate-700">Korea Green Fund</span></a>
-                 <a href="xinchina.html" class="inline-flex items-center gap-2 mx-8 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition"><div class="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center text-red-600 font-bold font-serif">XC</div><span class="font-bold text-lg text-slate-700">XinChina</span></a>
+                <a href="xinchina.html" class="inline-flex items-center gap-2 mx-8 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition"><div class="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center text-red-600 font-bold font-serif">XC</div><span class="font-bold text-lg text-slate-700">文行中国 XinChina</span></a>
             </div>
         </div>
     </div>
