@@ -9,7 +9,7 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;700&family=Inter:wght@300;400;500;600&family=Ma+Shan+Zheng&display=swap');
         
-        body { font-family: 'Inter', sans-serif; background-color: #fcfcfc; color: #1f2937; }
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; color: #334155; padding-bottom: 90px; }
         .serif { font-family: 'Noto Serif SC', serif; }
         .calligraphy { font-family: 'Ma Shan Zheng', cursive; }
         
@@ -28,26 +28,30 @@
             box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
         }
 
-        /* 桌面端 Hero 背景 */
+        /* 桌面端 Hero 背景 - 无锡都市图 */
         .hero-section {
-            background-image: url('https://images.unsplash.com/photo-1474181487882-5abf3f0ba6c2?ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80'); /* Modern China/Lifestyle */
+            background-image: url('wuxi_bg.jpg'); /* 请确保目录下有此文件 */
             background-size: cover;
             background-position: center;
             height: 600px;
             position: relative;
         }
         .hero-overlay {
-            background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.7));
+            background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.7));
         }
 
         /* 卡片悬停效果 */
         .hover-card { transition: all 0.3s ease; }
         .hover-card:hover { transform: translateY(-5px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); }
 
-        /* 商家红绿灯系统 */
-        .status-dot { height: 10px; width: 10px; border-radius: 50%; display: inline-block; margin-right: 6px; }
-        .dot-green { background-color: #22c55e; box-shadow: 0 0 8px #22c55e; }
+        /* 状态标识 */
+        .status-badge { padding: 2px 8px; border-radius: 4px; font-size: 10px; font-weight: bold; }
+        .status-resolved { background: #dcfce7; color: #166534; }
+        .status-urgent { background: #fee2e2; color: #991b1b; }
         
+        /* 认证标识 */
+        .verified-badge { display: inline-flex; align-items: center; gap: 2px; color: #0284c7; font-size: 10px; background: #e0f2fe; padding: 1px 4px; border-radius: 4px; }
+
         /* Heart of InChina Badge */
         .heart-badge {
             background: linear-gradient(135deg, #f59e0b, #d97706);
@@ -71,16 +75,16 @@
                 
                 <div class="hidden md:flex items-center gap-2 text-sm text-gray-600 border-l border-gray-200 pl-6 cursor-pointer hover:text-red-800">
                     <i class="fa-solid fa-location-dot"></i>
-                    <span class="font-bold">Shanghai 上海</span>
+                    <span class="font-bold">Wuxi 无锡</span>
                     <i class="fa-solid fa-angle-down text-xs"></i>
                 </div>
             </div>
 
             <div class="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-600">
                 <a href="#guide" class="hover:text-xin-red transition">生活指南</a>
-                <a href="#trusted" class="hover:text-xin-red transition">可信商家</a>
+                <a href="#forum" class="hover:text-xin-red transition">求助问答</a>
                 <a href="#events" class="hover:text-xin-red transition">同城活动</a>
-                <a href="#ecosystem" class="hover:text-xin-red transition">生态服务</a>
+                <a href="#major-events" class="hover:text-xin-red transition">国际盛会</a>
                 <a href="#esg" class="hover:text-xin-red transition">ESG公示</a>
             </div>
 
@@ -100,12 +104,12 @@
                 让理解与信任<br>发生在每一天
             </h1>
             <p class="text-lg md:text-xl text-gray-200 mb-10 font-light max-w-2xl mx-auto">
-                一站式生活向导 · 可信消费网络 · 真实社交连接 [cite: 442]
+                一站式生活向导 · 可信消费网络 · 真实社交连接
             </p>
 
             <div class="bg-white p-2 rounded-full shadow-2xl max-w-2xl mx-auto flex items-center transform hover:scale-105 transition duration-300">
                 <div class="pl-6 text-gray-400"><i class="fa-solid fa-magnifying-glass text-xl"></i></div>
-                <input type="text" placeholder="搜索您需要的服务：签证、国际医院、搬家、韩餐..." class="flex-1 bg-transparent border-none text-gray-800 text-lg px-4 py-3 focus:ring-0 placeholder-gray-400">
+                <input type="text" placeholder="搜索问题：如何办签证、哪里有国际医院、租房避坑..." class="flex-1 bg-transparent border-none text-gray-800 text-lg px-4 py-3 focus:ring-0 placeholder-gray-400">
                 <button class="bg-xin-red text-white px-8 py-3 rounded-full font-bold text-lg hover:bg-red-800 transition">
                     搜索
                 </button>
@@ -114,7 +118,6 @@
             <div class="mt-6 flex justify-center gap-3 text-sm text-white/80">
                 <span class="bg-white/10 px-3 py-1 rounded-full backdrop-blur-sm border border-white/20 cursor-pointer hover:bg-white/20">🔥 2026工作许可新规</span>
                 <span class="bg-white/10 px-3 py-1 rounded-full backdrop-blur-sm border border-white/20 cursor-pointer hover:bg-white/20">🏥 国际医保直付</span>
-                <span class="bg-white/10 px-3 py-1 rounded-full backdrop-blur-sm border border-white/20 cursor-pointer hover:bg-white/20">🏠 外籍租房避坑</span>
             </div>
         </div>
     </div>
@@ -124,103 +127,178 @@
             <div class="text-center mb-16">
                 <span class="text-xin-red font-bold text-xs tracking-widest uppercase">Our Solution</span>
                 <h2 class="text-3xl font-bold text-gray-900 mt-2">解决“三方高成本”，构建信任闭环</h2>
-                <p class="text-gray-500 mt-4 max-w-2xl mx-auto">我们不仅仅是一个论坛，而是通过“指南解决问题 -> 活动建立关系 -> 商家沉淀信任”的结构化路径，降低融入成本 [cite: 442]。</p>
+                <p class="text-gray-500 mt-4 max-w-2xl mx-auto">我们不仅仅是一个论坛，而是通过“指南解决问题 -> 活动建立关系 -> 商家沉淀信任”的结构化路径，降低融入成本。</p>
             </div>
 
             <div class="grid md:grid-cols-3 gap-8">
                 <div class="hover-card bg-slate-50 rounded-2xl p-8 border border-slate-100 text-center group">
-                    <div class="w-16 h-16 mx-auto bg-white rounded-full flex items-center justify-center text-blue-600 text-3xl shadow-md mb-6 group-hover:bg-blue-600 group-hover:text-white transition">
-                        <i class="fa-solid fa-compass"></i>
-                    </div>
+                    <div class="w-16 h-16 mx-auto bg-white rounded-full flex items-center justify-center text-blue-600 text-3xl shadow-md mb-6 group-hover:bg-blue-600 group-hover:text-white transition"><i class="fa-solid fa-compass"></i></div>
                     <h3 class="text-xl font-bold text-gray-900 mb-3">城市生活指南</h3>
-                    <p class="text-gray-500 text-sm leading-relaxed mb-6">
-                        结构化百科解决高频痛点：签证、支付、开户、12306购票。拒绝碎片化信息，提供保姆级图文/视频教程。
-                    </p>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-6">结构化百科解决高频痛点：签证、支付、开户、12306购票。拒绝碎片化信息，提供保姆级图文/视频教程。</p>
                     <a href="#" class="text-blue-600 font-bold text-sm hover:underline">浏览指南库 <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
 
                 <div id="trusted" class="hover-card bg-slate-50 rounded-2xl p-8 border border-slate-100 text-center group relative overflow-hidden">
                     <div class="absolute top-0 right-0 bg-green-100 text-green-700 text-[10px] px-2 py-1 rounded-bl font-bold">红绿灯评级</div>
-                    <div class="w-16 h-16 mx-auto bg-white rounded-full flex items-center justify-center text-green-600 text-3xl shadow-md mb-6 group-hover:bg-green-600 group-hover:text-white transition">
-                        <i class="fa-solid fa-store"></i>
-                    </div>
+                    <div class="w-16 h-16 mx-auto bg-white rounded-full flex items-center justify-center text-green-600 text-3xl shadow-md mb-6 group-hover:bg-green-600 group-hover:text-white transition"><i class="fa-solid fa-store"></i></div>
                     <h3 class="text-xl font-bold text-gray-900 mb-3">可信消费网络</h3>
-                    <p class="text-gray-500 text-sm leading-relaxed mb-6">
-                        独创“诚信红绿灯”系统 [cite: 503]。基于多维数据抓取与实地核验，为您筛选真正的外籍友好型商家。
-                    </p>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-6">独创“诚信红绿灯”系统。基于多维数据抓取与实地核验，为您筛选真正的外籍友好型商家。</p>
                     <a href="#" class="text-green-600 font-bold text-sm hover:underline">查找附近好店 <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
 
                 <div id="events" class="hover-card bg-slate-50 rounded-2xl p-8 border border-slate-100 text-center group">
-                    <div class="w-16 h-16 mx-auto bg-white rounded-full flex items-center justify-center text-red-600 text-3xl shadow-md mb-6 group-hover:bg-red-600 group-hover:text-white transition">
-                        <i class="fa-solid fa-glass-cheers"></i>
-                    </div>
+                    <div class="w-16 h-16 mx-auto bg-white rounded-full flex items-center justify-center text-red-600 text-3xl shadow-md mb-6 group-hover:bg-red-600 group-hover:text-white transition"><i class="fa-solid fa-glass-cheers"></i></div>
                     <h3 class="text-xl font-bold text-gray-900 mb-3">固定线下活动</h3>
-                    <p class="text-gray-500 text-sm leading-relaxed mb-6">
-                        每周固定的迎新局、兴趣社与主题沙龙。将线上的“陌生人”转化为线下的“真实朋友”，重建归属感。
-                    </p>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-6">每周固定的迎新局、兴趣社与主题沙龙。将线上的“陌生人”转化为线下的“真实朋友”，重建归属感。</p>
                     <a href="#" class="text-red-600 font-bold text-sm hover:underline">查看本周活动 <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
             </div>
         </div>
     </div>
 
-    <div id="ecosystem" class="py-20 bg-gray-50 border-y border-gray-200">
+    <div id="forum" class="py-20 bg-blue-50/50 border-y border-gray-200">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="flex justify-between items-end mb-12">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
                 <div>
-                    <h2 class="text-3xl font-bold text-gray-900">InChina 专属生态</h2>
-                    <p class="text-gray-500 mt-2">针对特定需求的垂直化服务，连接家乡味与信任圈。</p>
+                    <span class="text-blue-600 font-bold text-xs tracking-widest uppercase">Community Help</span>
+                    <h2 class="text-3xl font-bold text-gray-900 mt-2">求助问答与经验帖</h2>
+                    <p class="text-gray-500 mt-2 max-w-2xl">
+                        连接每一位在华友人的真实经验。结构化求助、分层认证回答，让互助更高效，让经验可复用。
+                    </p>
                 </div>
-                <div class="flex gap-2">
-                    <button class="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center hover:bg-white"><i class="fa-solid fa-arrow-left"></i></button>
-                    <button class="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center hover:bg-white"><i class="fa-solid fa-arrow-right"></i></button>
+                <div class="flex gap-4">
+                    <button class="bg-white border border-gray-200 text-gray-700 px-6 py-2.5 rounded-lg font-bold hover:bg-gray-50 shadow-sm"><i class="fa-solid fa-pen-to-square mr-2"></i> 分享经验</button>
+                    <button class="bg-blue-600 text-white px-6 py-2.5 rounded-lg font-bold hover:bg-blue-700 shadow-md shadow-blue-200"><i class="fa-solid fa-hand-holding-heart mr-2"></i> 发布求助</button>
                 </div>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-8">
-                <div class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition border-l-8 border-orange-500 flex flex-col md:flex-row items-center gap-8 relative overflow-hidden group">
-                    <div class="absolute -right-10 -top-10 w-40 h-40 bg-orange-50 rounded-full group-hover:scale-150 transition duration-700"></div>
-                    <div class="flex-1 relative z-10">
-                        <div class="flex items-center gap-3 mb-4">
-                            <span class="w-12 h-12 rounded-lg bg-orange-100 text-orange-600 flex items-center justify-center text-2xl"><i class="fa-solid fa-bowl-food"></i></span>
-                            <div>
-                                <h3 class="text-2xl font-bold text-gray-900">韩食通</h3>
-                                <p class="text-sm text-orange-600 font-bold">배달通 (HanFood Pass)</p>
-                            </div>
-                        </div>
-                        <p class="text-gray-500 mb-6 text-sm">
-                            垂直于正宗韩餐的双语外卖平台。深度集成微信支付与私域社群，解决语言障碍，还原家乡味道。
-                        </p>
-                        <ul class="space-y-2 mb-6">
-                            <li class="flex items-center text-sm text-gray-600"><i class="fa-solid fa-check text-orange-500 mr-2"></i> 中韩双语界面</li>
-                            <li class="flex items-center text-sm text-gray-600"><i class="fa-solid fa-check text-orange-500 mr-2"></i> 严选正宗韩国老板店铺</li>
-                        </ul>
-                        <button class="bg-orange-500 text-white px-6 py-2 rounded-lg font-bold hover:bg-orange-600 transition">进入点餐</button>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition cursor-pointer">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="status-badge status-urgent">急助 Urgent</span>
+                        <span class="text-xs text-gray-400">10分钟前</span>
                     </div>
-                    <img src="https://images.unsplash.com/photo-1599021406444-257a31e34227?auto=format&fit=crop&w=400&q=80" class="w-40 h-40 object-cover rounded-xl shadow-lg rotate-3 group-hover:rotate-0 transition duration-500">
+                    <h3 class="font-bold text-gray-800 mb-2 line-clamp-2">租房遇到二房东不退押金，没有签正规合同，该怎么报警？</h3>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded">#法律援助</span>
+                        <span class="bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded">#租房纠纷</span>
+                    </div>
+                    <div class="flex items-center justify-between border-t border-gray-100 pt-3">
+                        <div class="flex items-center gap-2">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" class="w-6 h-6 rounded-full">
+                            <span class="text-xs text-gray-500">Sarah (UK)</span>
+                        </div>
+                        <div class="flex items-center gap-1 text-xs text-gray-400">
+                            <i class="fa-regular fa-comment"></i> 5
+                        </div>
+                    </div>
                 </div>
 
-                <div class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition border-l-8 border-pink-500 flex flex-col md:flex-row items-center gap-8 relative overflow-hidden group">
-                    <div class="absolute -right-10 -top-10 w-40 h-40 bg-pink-50 rounded-full group-hover:scale-150 transition duration-700"></div>
-                    <div class="flex-1 relative z-10">
-                        <div class="flex items-center gap-3 mb-4">
-                            <span class="w-12 h-12 rounded-lg bg-pink-100 text-pink-600 flex items-center justify-center text-2xl"><i class="fa-solid fa-users-line"></i></span>
-                            <div>
-                                <h3 class="text-2xl font-bold text-gray-900">InChina 团团</h3>
-                                <p class="text-sm text-pink-600 font-bold">InGroup Buy</p>
-                            </div>
-                        </div>
-                        <p class="text-gray-500 mb-6 text-sm">
-                            基于“信任”的社交裂变电商。团长担保、一键帮卖。让社区KOL带领大家发现好货，享受阶梯拼团价。
-                        </p>
-                        <ul class="space-y-2 mb-6">
-                            <li class="flex items-center text-sm text-gray-600"><i class="fa-solid fa-check text-pink-500 mr-2"></i> 团长信用背书</li>
-                            <li class="flex items-center text-sm text-gray-600"><i class="fa-solid fa-check text-pink-500 mr-2"></i> 自动分佣与结算</li>
-                        </ul>
-                        <button class="bg-pink-500 text-white px-6 py-2 rounded-lg font-bold hover:bg-pink-600 transition">发现好团</button>
+                <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition cursor-pointer">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="status-badge status-resolved"><i class="fa-solid fa-check"></i> 已解决 Solved</span>
+                        <span class="text-xs text-gray-400">2小时前</span>
                     </div>
-                    <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?auto=format&fit=crop&w=400&q=80" class="w-40 h-40 object-cover rounded-xl shadow-lg -rotate-3 group-hover:rotate-0 transition duration-500">
+                    <h3 class="font-bold text-gray-800 mb-2 line-clamp-2">无锡新吴区附近哪里有能讲英语的牙科诊所？</h3>
+                    <p class="text-sm text-gray-500 mb-4 line-clamp-2">牙疼了两天了，需要做根管治疗，求推荐靠谱的医院。</p>
+                    <div class="bg-blue-50 p-3 rounded-lg mb-3">
+                        <div class="flex items-center gap-2 mb-1">
+                            <span class="verified-badge"><i class="fa-solid fa-certificate"></i> 认证回答</span>
+                            <span class="text-xs font-bold text-blue-800">Dr. Li</span>
+                        </div>
+                        <p class="text-xs text-blue-900">推荐去嘉会诊所或人民医院国际部...</p>
+                    </div>
+                    <div class="flex items-center justify-between border-t border-gray-100 pt-3">
+                        <div class="flex items-center gap-2">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" class="w-6 h-6 rounded-full">
+                            <span class="text-xs text-gray-500">Mike (US)</span>
+                        </div>
+                        <div class="flex items-center gap-1 text-xs text-gray-400">
+                            <i class="fa-regular fa-comment"></i> 12
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition cursor-pointer border-l-4 border-yellow-400">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="bg-yellow-100 text-yellow-800 status-badge">经验分享 Guide</span>
+                        <span class="text-xs text-gray-400">昨天</span>
+                    </div>
+                    <h3 class="font-bold text-gray-800 mb-2">亲测！2025年最新外国人办理中国银行卡全流程（附材料清单）</h3>
+                    <p class="text-sm text-gray-500 mb-4 line-clamp-2">跑了三家银行才办下来，总结了一些避坑指南，希望能帮到大家。</p>
+                    <div class="flex items-center justify-between border-t border-gray-100 pt-3">
+                        <div class="flex items-center gap-2">
+                            <div class="w-6 h-6 bg-yellow-100 rounded-full flex items-center justify-center text-yellow-600 text-xs font-bold">V</div>
+                            <span class="text-xs text-gray-500">InChina小编</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-xs text-gray-400">
+                            <span><i class="fa-regular fa-eye"></i> 2.3k</span>
+                            <span><i class="fa-regular fa-heart"></i> 156</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="major-events" class="py-20 bg-slate-900 text-white relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-20"></div>
+        
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="text-center mb-16">
+                <span class="text-red-500 font-bold text-xs tracking-widest uppercase">Global Influence</span>
+                <h2 class="text-3xl md:text-4xl font-serif font-bold mt-2 text-white">国际盛会与先锋足迹</h2>
+                <p class="text-slate-400 mt-4 max-w-2xl mx-auto">无锡先锋公益长期承接与参与国家级、国际级重大交流活动，搭建连接世界的桥梁。</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white/5 border border-white/10 rounded-2xl overflow-hidden group hover:border-red-900/50 transition">
+                    <div class="h-48 bg-slate-800 relative">
+                        <img src="https://images.unsplash.com/photo-1544531586-fde5298cdd40?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition duration-500">
+                        <div class="absolute top-4 left-4 bg-slate-900/80 text-white text-xs px-2 py-1 rounded backdrop-blur">已举办</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-red-100">中国国际智能传播论坛</h3>
+                        <p class="text-sm text-slate-400 mb-4 line-clamp-3">
+                            作为无锡国际传播联盟成员，先锋公益志愿者团队全程参与接待与翻译服务，向世界展示无锡的智能与热情。
+                        </p>
+                        <div class="flex gap-2 text-xs text-slate-500">
+                            <span><i class="fa-solid fa-users"></i> 300+ 志愿者</span>
+                            <span><i class="fa-solid fa-earth-asia"></i> 30+ 国家</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white/5 border border-white/10 rounded-2xl overflow-hidden group hover:border-red-900/50 transition">
+                    <div class="h-48 bg-slate-800 relative">
+                        <img src="https://images.unsplash.com/photo-1551818255-e6e10975bc17?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition duration-500">
+                        <div class="absolute top-4 left-4 bg-slate-900/80 text-white text-xs px-2 py-1 rounded backdrop-blur">常态化</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-red-100">无锡国际传播联盟</h3>
+                        <p class="text-sm text-slate-400 mb-4 line-clamp-3">
+                            新吴区先锋公益文化志愿服务中心荣获授牌，承担“展形象”使命，常态化服务城市国际化进程。
+                        </p>
+                        <div class="flex gap-2 text-xs text-slate-500">
+                            <span><i class="fa-solid fa-medal"></i> 官方授牌</span>
+                            <span><i class="fa-solid fa-handshake"></i> 政社协同</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-gradient-to-b from-red-900/40 to-slate-900 border border-red-500/30 rounded-2xl overflow-hidden group hover:shadow-[0_0_30px_rgba(220,38,38,0.3)] transition relative transform md:-translate-y-4">
+                    <div class="absolute top-0 right-0 bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-bl shadow-lg z-10">UPCOMING</div>
+                    <div class="h-48 bg-slate-800 relative">
+                        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition duration-500">
+                    </div>
+                    <div class="p-6">
+                        <div class="text-xs font-bold text-red-400 mb-1 tracking-widest">2026 年度重磅</div>
+                        <h3 class="text-2xl font-bold mb-3 text-white">无锡国际半导体设备材料展</h3>
+                        <p class="text-sm text-slate-300 mb-6">
+                            CSEAC 2026. 先锋公益将再次集结多语种志愿者团队，服务这一全球科技盛会。
+                        </p>
+                        <button class="w-full border border-red-500 text-red-400 py-2 rounded font-bold hover:bg-red-600 hover:text-white transition">志愿者招募预热中</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -228,53 +306,39 @@
 
     <div id="esg" class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="bg-slate-900 rounded-3xl p-12 text-white relative overflow-hidden">
-                <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-red-900/50 to-transparent"></div>
+            <div class="bg-slate-50 rounded-3xl p-12 border border-slate-100 relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-white to-transparent opacity-50"></div>
                 
                 <div class="relative z-10 flex flex-col md:flex-row items-center gap-12">
                     <div class="md:w-1/2">
-                        <div class="inline-flex items-center gap-2 bg-white/10 px-3 py-1 rounded-full text-xs font-bold mb-6 border border-white/20">
-                            <i class="fa-solid fa-seedling text-green-400"></i> ESG 可审计信任体系
+                        <div class="inline-flex items-center gap-2 bg-green-100 px-3 py-1 rounded-full text-xs font-bold text-green-700 mb-6">
+                            <i class="fa-solid fa-seedling"></i> ESG 可审计信任体系
                         </div>
-                        <h2 class="text-4xl font-bold mb-6">善行在华 Heart of InChina</h2>
-                        <p class="text-gray-300 mb-8 leading-relaxed">
-                            我们建立了一套“良心驱动”的商业逻辑。通过“红绿灯”评级与公益勋章，让诚信商家和公益行为被看见、被奖励 [cite: 504]。
+                        <h2 class="text-4xl font-bold mb-6 text-gray-900">善行在华 Heart of InChina</h2>
+                        <p class="text-gray-500 mb-8 leading-relaxed">
+                            我们建立了一套“良心驱动”的商业逻辑。通过“红绿灯”评级与公益勋章，让诚信商家和公益行为被看见、被奖励。
                         </p>
                         <div class="flex gap-8">
-                            <div>
-                                <div class="text-3xl font-bold text-amber-400 mb-1">300+</div>
-                                <div class="text-xs text-gray-400">公益勋章商家</div>
-                            </div>
-                            <div>
-                                <div class="text-3xl font-bold text-green-400 mb-1">100%</div>
-                                <div class="text-xs text-gray-400">透明度包披露</div>
-                            </div>
-                            <div>
-                                <div class="text-3xl font-bold text-blue-400 mb-1">72h</div>
-                                <div class="text-xs text-gray-400">纠纷处理时效</div>
-                            </div>
+                            <div><div class="text-3xl font-bold text-amber-500 mb-1">300+</div><div class="text-xs text-gray-400">公益勋章商家</div></div>
+                            <div><div class="text-3xl font-bold text-green-600 mb-1">100%</div><div class="text-xs text-gray-400">透明度包披露</div></div>
+                            <div><div class="text-3xl font-bold text-blue-600 mb-1">72h</div><div class="text-xs text-gray-400">纠纷处理时效</div></div>
                         </div>
                     </div>
                     
                     <div class="md:w-1/2">
-                        <div class="bg-white text-gray-800 p-6 rounded-xl shadow-2xl max-w-sm mx-auto transform rotate-2 hover:rotate-0 transition duration-500">
+                        <div class="bg-white text-gray-800 p-6 rounded-xl shadow-xl max-w-sm mx-auto border border-gray-100 transform rotate-2 hover:rotate-0 transition duration-500">
                             <div class="flex justify-between items-start mb-4">
                                 <div class="flex gap-3">
                                     <img src="https://randomuser.me/api/portraits/men/32.jpg" class="w-12 h-12 rounded-full border-2 border-amber-400">
                                     <div>
                                         <h4 class="font-bold text-lg">Global Care 诊所</h4>
-                                        <div class="flex items-center gap-2 text-xs mt-1">
-                                            <span class="heart-badge"><i class="fa-solid fa-heart"></i> Heart of InChina</span>
-                                        </div>
+                                        <div class="flex items-center gap-2 text-xs mt-1"><span class="heart-badge"><i class="fa-solid fa-heart"></i> Heart of InChina</span></div>
                                     </div>
                                 </div>
                                 <span class="bg-green-100 text-green-700 px-2 py-1 rounded text-xs font-bold"><span class="status-dot dot-green"></span> 4.9</span>
                             </div>
                             <p class="text-sm text-gray-600 mb-4">"感谢 InChina 社区的认可。我们将继续为留学生提供每周末的义诊服务。善意无国界！"</p>
-                            <div class="border-t border-gray-100 pt-4 flex justify-between text-xs text-gray-400">
-                                <span><i class="fa-solid fa-location-dot"></i> 上海 · 静安</span>
-                                <span><i class="fa-solid fa-clock"></i> 入驻 320 天</span>
-                            </div>
+                            <div class="border-t border-gray-100 pt-4 flex justify-between text-xs text-gray-400"><span><i class="fa-solid fa-location-dot"></i> 上海 · 静安</span><span><i class="fa-solid fa-clock"></i> 入驻 320 天</span></div>
                         </div>
                     </div>
                 </div>
@@ -282,7 +346,24 @@
         </div>
     </div>
 
-    <div class="bg-gray-50 py-16 border-t border-gray-200 mt-10">
+    <div id="join-us" class="py-16 bg-red-900 text-white border-t border-red-800">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="text-3xl font-bold mb-4">加入我们，成为连接世界的桥梁</h2>
+            <p class="text-red-100 mb-8 max-w-2xl mx-auto">
+                无论您是希望贡献时间的外籍/本地志愿者，还是希望提供帮助的热心市民，无锡先锋公益都欢迎您的加入。让我们一起，遇见无锡，读懂中国。
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <button class="bg-white text-red-900 px-8 py-3 rounded-full font-bold hover:bg-red-50 transition shadow-lg">
+                    成为志愿者 (Volunteer)
+                </button>
+                <button class="bg-transparent border-2 border-white text-white px-8 py-3 rounded-full font-bold hover:bg-white/10 transition">
+                    联系我们 (Contact Us)
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-gray-50 py-16 border-t border-gray-200">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-10">
                 <p class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-6">Powered by XinChina Ecosystem</p>
@@ -307,6 +388,14 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <div class="bottom-nav">
+        <div class="nav-item active"><i class="fa-solid fa-house-chimney"></i><span>首页</span></div>
+        <div class="nav-item"><i class="fa-solid fa-map-location-dot"></i><span>大众点评</span></div>
+        <div class="nav-item relative"><div class="nav-center-btn shadow-lg active:scale-95 transition"><i class="fa-solid fa-plus"></i></div><span class="mt-7 font-medium text-slate-600">发布</span></div>
+        <div class="nav-item"><i class="fa-solid fa-shop"></i><span>市场</span></div>
+        <div class="nav-item"><i class="fa-solid fa-user"></i><span>我的</span></div>
     </div>
 
 </body>
